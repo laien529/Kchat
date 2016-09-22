@@ -13,6 +13,7 @@
 		48F636131D94158200721C36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F636111D94158200721C36 /* Main.storyboard */; };
 		48F636151D94158200721C36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F636141D94158200721C36 /* Assets.xcassets */; };
 		48F636181D94158200721C36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F636161D94158200721C36 /* LaunchScreen.storyboard */; };
+		48F636201D941BF700721C36 /* KchatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F6361F1D941BF700721C36 /* KchatViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		48F636141D94158200721C36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48F636171D94158200721C36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48F636191D94158200721C36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48F6361F1D941BF700721C36 /* KchatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KchatViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				48F636161D94158200721C36 /* LaunchScreen.storyboard */,
 				48F636191D94158200721C36 /* Info.plist */,
 				48F636081D94158200721C36 /* Supporting Files */,
+				48F6361F1D941BF700721C36 /* KchatViewController.xib */,
 			);
 			path = Kchat;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			files = (
 				48F636181D94158200721C36 /* LaunchScreen.storyboard in Resources */,
 				48F636151D94158200721C36 /* Assets.xcassets in Resources */,
+				48F636201D941BF700721C36 /* KchatViewController.xib in Resources */,
 				48F636131D94158200721C36 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +304,7 @@
 				48F6361E1D94158200721C36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
