@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ChartViewController.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    _chartView.backgroundColor = [UIColor yellowColor];
+    
+    ChartViewController *indexViewController = [[ChartViewController alloc] init];
+    indexViewController.view.frame = CGRectMake(0, 0, CGRectGetWidth(_chartView.frame), CGRectGetHeight(_chartView.frame));
+    indexViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [_chartView addSubview:indexViewController.view];
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations{
