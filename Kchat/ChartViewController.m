@@ -7,11 +7,13 @@
 //
 
 #import "ChartViewController.h"
-#import "ASIHTTPRequest.h"
+#import "AFNetworking.h"
 #import "ResourceHelper.h"
 #import "JSONKit.h"
 
-@interface ChartViewController ()
+@interface ChartViewController (){
+    AFHTTPSessionManager *afmanager;
+}
 
 @end
 
@@ -29,14 +31,14 @@
     self.tradeStatus= 1;
     self.req_freq   = @"d";
     self.req_type   = @"H";
-    self.req_url    = @"http://ichart.yahoo.com/table.csv?s=%@&g=%@";
+    self.req_url    = @"http://ichart.yahoo.com/table.csv?s=600019.SS&g=d";
     
     //candleChart
-    _candleChart = [[Chart alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    _candleChart = [[Chart alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     [self.view addSubview:_candleChart];
     //init chart
     [self initChart];
-    
+    [self getData];
 }
 
 
@@ -223,24 +225,35 @@
     }else{
         [self.candleChart getSection:2].hidden = NO;
     }
-    NSString *reqURL = [[NSString alloc] initWithFormat:self.req_url,self.req_security_id,self.req_freq];
-    NSLog(@"url:%@",reqURL);
+//    NSString *reqURL = [[NSString alloc] initWithFormat:self.req_url];
+    NSLog(@"url:%@",self.req_url);
     
-    NSURL *url = [NSURL URLWithString:[reqURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *url = [NSURL URLWithString:[self.req_url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-    [request setTimeOutSeconds:5];
-    [request setDelegate:self];
-    [request startAsynchronous];
+    afmanager = [AFHTTPSessionManager manager];
+    afmanager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
+//    afmanager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/csv", nil];
+//        afmanager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", nil];
+
+    [afmanager GET:_req_url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *res = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"responseObject==%@",responseObject);
+        [self requestFinished:res];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
 }
 
-- (void)requestFinished:(ASIHTTPRequest *)request
+- (void)requestFinished:(NSString*)response
 {
     self.status.text = @"";
     NSMutableArray *data =[[NSMutableArray alloc] init];
     NSMutableArray *category =[[NSMutableArray alloc] init];
     
-    NSString *content = [request responseString];
+    NSString *content = response;
     NSArray *lines = [content componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     NSInteger idx;
     for (idx = lines.count-1; idx > 0; idx--) {
@@ -578,10 +591,6 @@
     [self.candleChart appendToCategory:category forName:@"price"];
     [self.candleChart appendToCategory:category forName:@"line"];
     
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request{
-    self.status.text = @"Error!";
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

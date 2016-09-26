@@ -80,7 +80,7 @@
 	}
 
     CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetRGBFillColor(context, 0, 0, 0, 1.0);
+    CGContextSetRGBFillColor(context, 1, 1, 1, 1.0);
     CGContextFillRect (context, CGRectMake (0, 0, self.bounds.size.width,self.bounds.size.height));
 }
 
@@ -503,6 +503,7 @@
 -(Section *)getSection:(int) index{
     return self.sections[index];
 }
+
 -(int)getIndexOfSection:(CGPoint) point{
     for(int i=0;i<self.sections.count;i++){
 	    Section *sec = self.sections[i];

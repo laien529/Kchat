@@ -15,7 +15,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="x30-pT-cYb">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view alpha="0.64999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frq-43-mh9">
@@ -143,6 +143,7 @@
                 <constraint firstItem="WFI-3U-NvJ" firstAttribute="width" secondItem="x30-pT-cYb" secondAttribute="width" id="wt9-H8-t0A"/>
                 <constraint firstItem="frq-43-mh9" firstAttribute="leading" secondItem="x30-pT-cYb" secondAttribute="leadingMargin" id="yeh-xq-lbA"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="yeh-xq-lbA"/>
