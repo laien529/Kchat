@@ -37,6 +37,7 @@
 		48E0A6841D99723000B1CC94 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A67C1D99723000B1CC94 /* AFURLRequestSerialization.m */; };
 		48E0A6851D99723000B1CC94 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A67E1D99723000B1CC94 /* AFURLResponseSerialization.m */; };
 		48E0A6861D99723000B1CC94 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6801D99723000B1CC94 /* AFURLSessionManager.m */; };
+		48E0A6881D9D592400B1CC94 /* back-white-nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0A6871D9D592400B1CC94 /* back-white-nor@2x.png */; };
 		48F6360A1D94158200721C36 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F636091D94158200721C36 /* main.m */; };
 		48F6360D1D94158200721C36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F6360C1D94158200721C36 /* AppDelegate.m */; };
 		48F636101D94158200721C36 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F6360F1D94158200721C36 /* ViewController.m */; };
@@ -98,6 +99,7 @@
 		48E0A67E1D99723000B1CC94 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		48E0A67F1D99723000B1CC94 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		48E0A6801D99723000B1CC94 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		48E0A6871D9D592400B1CC94 /* back-white-nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-white-nor@2x.png"; sourceTree = "<group>"; };
 		48F636051D94158200721C36 /* Kchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F636091D94158200721C36 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		48F6360B1D94158200721C36 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		48F636071D94158200721C36 /* Kchat */ = {
 			isa = PBXGroup;
 			children = (
+				48E0A6871D9D592400B1CC94 /* back-white-nor@2x.png */,
 				48E0A65D1D98344A00B1CC94 /* indicators.json */,
 				48E0A6531D9832F500B1CC94 /* util */,
 				48E0A64D1D98323500B1CC94 /* Section.h */,
@@ -301,7 +304,7 @@
 				TargetAttributes = {
 					48F636041D94158200721C36 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = TAZ3VH87E4;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -329,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48E0A60E1D97D40D00B1CC94 /* ChartViewController.xib in Resources */,
+				48E0A6881D9D592400B1CC94 /* back-white-nor@2x.png in Resources */,
 				48F636181D94158200721C36 /* LaunchScreen.storyboard in Resources */,
 				48F636151D94158200721C36 /* Assets.xcassets in Resources */,
 				48F636201D941BF700721C36 /* KchatViewController.xib in Resources */,
@@ -478,7 +482,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TAZ3VH87E4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Kchat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cc.Kchat;
@@ -490,7 +494,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TAZ3VH87E4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Kchat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cc.Kchat;

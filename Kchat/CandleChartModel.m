@@ -191,7 +191,7 @@
 
         tmp = [[NSMutableDictionary alloc] init];
         l = [[NSMutableString alloc] init];
-        [l appendFormat:@"Close:%.2f",close];
+        [l appendFormat:@"昨收:%.2f",close];
         tmp[@"text"] = l;
         clr = [[NSMutableString alloc] init];
         if(close>open){
