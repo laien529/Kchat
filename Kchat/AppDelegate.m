@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
-
+#import <Charts/Charts-Swift.h>
 @interface AppDelegate ()
 
 @end

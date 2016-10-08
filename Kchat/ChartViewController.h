@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Chart.h"
+#import "CandleStickChartViewController.h"
+#import "DemoBaseViewController.h"
+#import "BarChartViewController.h"
 
-@interface ChartViewController : UIViewController
+@interface ChartViewController : DemoBaseViewController{
+    NSArray<NSString *> *months;
+}
 
-@property (nonatomic,strong) Chart *candleChart;
-//@property (nonatomic,strong) NSTimer *timer;
-@property (nonatomic) int chartMode;
-@property (nonatomic) int tradeStatus;
+@property (nonatomic,strong) CandleStickChartViewController *candleChart;
+@property (nonatomic,strong) BarChartViewController *barChart;
 @property (nonatomic,strong) NSString *lastTime;
 @property (nonatomic,strong) UILabel *status;
 @property (nonatomic,strong) NSString *req_freq;
@@ -22,12 +25,12 @@
 @property (nonatomic,strong) NSString *req_url;
 @property (nonatomic,strong) NSString *req_security_id;
 
--(void)initChart;
--(void)getData;
--(void)generateData:(NSMutableDictionary *)dic From:(NSArray *)data;
--(void)setData:(NSDictionary *)dic;
--(void)setCategory:(NSArray *)category;
--(BOOL)isCodesExpired;
--(void)setOptions:(NSDictionary *)options ForSerie:(NSMutableDictionary *)serie;
+//-(void)initChart;
+//-(void)getData;
+//-(void)generateData:(NSMutableDictionary *)dic From:(NSArray *)data;
+//-(void)setData:(NSDictionary *)dic;
+//-(void)setCategory:(NSArray *)category;
+//-(BOOL)isCodesExpired;
+//-(void)setOptions:(NSDictionary *)options ForSerie:(NSMutableDictionary *)serie;
 
 @end
