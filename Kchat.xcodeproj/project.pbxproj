@@ -25,7 +25,6 @@
 		48E0A63A1D97D63E00B1CC94 /* ResourceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6371D97D63E00B1CC94 /* ResourceHelper.m */; };
 		48E0A6591D98330600B1CC94 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6581D98330600B1CC94 /* Date.m */; };
 		48E0A65C1D98337400B1CC94 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A65B1D98337400B1CC94 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		48E0A65E1D98344A00B1CC94 /* indicators.json in Resources */ = {isa = PBXBuildFile; fileRef = 48E0A65D1D98344A00B1CC94 /* indicators.json */; };
 		48E0A6611D9834E700B1CC94 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E0A6601D9834E700B1CC94 /* CFNetwork.framework */; };
 		48E0A6631D9834EE00B1CC94 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E0A6621D9834EE00B1CC94 /* SystemConfiguration.framework */; };
 		48E0A6651D98351A00B1CC94 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E0A6641D98351A00B1CC94 /* MobileCoreServices.framework */; };
@@ -118,7 +117,6 @@
 		48E0A6581D98330600B1CC94 /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Date.m; sourceTree = "<group>"; };
 		48E0A65A1D98337400B1CC94 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		48E0A65B1D98337400B1CC94 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		48E0A65D1D98344A00B1CC94 /* indicators.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = indicators.json; sourceTree = "<group>"; };
 		48E0A6601D9834E700B1CC94 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		48E0A6621D9834EE00B1CC94 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		48E0A6641D98351A00B1CC94 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -325,7 +323,6 @@
 				48E0A60C1D97D40D00B1CC94 /* ChartViewController.xib */,
 				48DA33AF1DA61D4D0022C19E /* DemoBaseViewController.h */,
 				48DA33B01DA61D4D0022C19E /* DemoBaseViewController.m */,
-				48E0A65D1D98344A00B1CC94 /* indicators.json */,
 				48F636191D94158200721C36 /* Info.plist */,
 				48F6361F1D941BF700721C36 /* KchatViewController.xib */,
 				48F636161D94158200721C36 /* LaunchScreen.storyboard */,
@@ -444,7 +441,6 @@
 				48F636151D94158200721C36 /* Assets.xcassets in Resources */,
 				48F636201D941BF700721C36 /* KchatViewController.xib in Resources */,
 				48F636131D94158200721C36 /* Main.storyboard in Resources */,
-				48E0A65E1D98344A00B1CC94 /* indicators.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
