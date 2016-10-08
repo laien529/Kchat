@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Chart.h"
 #import "DemoBaseViewController.h"
 
 @interface ChartViewController : DemoBaseViewController{

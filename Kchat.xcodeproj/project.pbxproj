@@ -23,14 +23,6 @@
 		48E0A6381D97D63E00B1CC94 /* CacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6331D97D63E00B1CC94 /* CacheHelper.m */; };
 		48E0A6391D97D63E00B1CC94 /* EncryptHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6351D97D63E00B1CC94 /* EncryptHelper.m */; };
 		48E0A63A1D97D63E00B1CC94 /* ResourceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6371D97D63E00B1CC94 /* ResourceHelper.m */; };
-		48E0A63D1D97D69200B1CC94 /* AreaChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A63C1D97D69200B1CC94 /* AreaChartModel.m */; };
-		48E0A6441D97D6B300B1CC94 /* CandleChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A63F1D97D6B300B1CC94 /* CandleChartModel.m */; };
-		48E0A6451D97D6B300B1CC94 /* ChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6411D97D6B300B1CC94 /* ChartModel.m */; };
-		48E0A6461D97D6B300B1CC94 /* ColumnChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6431D97D6B300B1CC94 /* ColumnChartModel.m */; };
-		48E0A6491D97D6C200B1CC94 /* Chart.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6481D97D6C200B1CC94 /* Chart.m */; };
-		48E0A64C1D97D9A100B1CC94 /* YAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A64B1D97D9A100B1CC94 /* YAxis.m */; };
-		48E0A64F1D98323500B1CC94 /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A64E1D98323500B1CC94 /* Section.m */; };
-		48E0A6521D98325E00B1CC94 /* LineChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6511D98325E00B1CC94 /* LineChartModel.m */; };
 		48E0A6591D98330600B1CC94 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6581D98330600B1CC94 /* Date.m */; };
 		48E0A65C1D98337400B1CC94 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A65B1D98337400B1CC94 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		48E0A65E1D98344A00B1CC94 /* indicators.json in Resources */ = {isa = PBXBuildFile; fileRef = 48E0A65D1D98344A00B1CC94 /* indicators.json */; };
@@ -48,7 +40,6 @@
 		48E0A6841D99723000B1CC94 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A67C1D99723000B1CC94 /* AFURLRequestSerialization.m */; };
 		48E0A6851D99723000B1CC94 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A67E1D99723000B1CC94 /* AFURLResponseSerialization.m */; };
 		48E0A6861D99723000B1CC94 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6801D99723000B1CC94 /* AFURLSessionManager.m */; };
-		48E0A6881D9D592400B1CC94 /* back-white-nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0A6871D9D592400B1CC94 /* back-white-nor@2x.png */; };
 		48F6360A1D94158200721C36 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F636091D94158200721C36 /* main.m */; };
 		48F6360D1D94158200721C36 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F6360C1D94158200721C36 /* AppDelegate.m */; };
 		48F636101D94158200721C36 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48F6360F1D94158200721C36 /* ViewController.m */; };
@@ -110,7 +101,6 @@
 		48DA33C81DA629BC0022C19E /* LargeValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LargeValueFormatter.swift; sourceTree = "<group>"; };
 		48DA33D11DA62CBA0022C19E /* Kchat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kchat.swift; sourceTree = "<group>"; };
 		48DA33D31DA62CE80022C19E /* Kchat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kchat-Bridging-Header.h"; sourceTree = "<group>"; };
-		48DA33D41DA62E0D0022C19E /* LargeValueFormatter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LargeValueFormatter-Bridging-Header.h"; sourceTree = "<group>"; };
 		48DA33D61DA649360022C19E /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		48DA33D71DA649360022C19E /* RadarMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadarMarkerView.swift; sourceTree = "<group>"; };
 		48DA33D81DA649360022C19E /* RadarMarkerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadarMarkerView.xib; sourceTree = "<group>"; };
@@ -124,22 +114,6 @@
 		48E0A6351D97D63E00B1CC94 /* EncryptHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptHelper.m; sourceTree = "<group>"; };
 		48E0A6361D97D63E00B1CC94 /* ResourceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceHelper.h; sourceTree = "<group>"; };
 		48E0A6371D97D63E00B1CC94 /* ResourceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceHelper.m; sourceTree = "<group>"; };
-		48E0A63B1D97D69200B1CC94 /* AreaChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaChartModel.h; sourceTree = "<group>"; };
-		48E0A63C1D97D69200B1CC94 /* AreaChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaChartModel.m; sourceTree = "<group>"; };
-		48E0A63E1D97D6B300B1CC94 /* CandleChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CandleChartModel.h; sourceTree = "<group>"; };
-		48E0A63F1D97D6B300B1CC94 /* CandleChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CandleChartModel.m; sourceTree = "<group>"; };
-		48E0A6401D97D6B300B1CC94 /* ChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartModel.h; sourceTree = "<group>"; };
-		48E0A6411D97D6B300B1CC94 /* ChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartModel.m; sourceTree = "<group>"; };
-		48E0A6421D97D6B300B1CC94 /* ColumnChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColumnChartModel.h; sourceTree = "<group>"; };
-		48E0A6431D97D6B300B1CC94 /* ColumnChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColumnChartModel.m; sourceTree = "<group>"; };
-		48E0A6471D97D6C200B1CC94 /* Chart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chart.h; sourceTree = "<group>"; };
-		48E0A6481D97D6C200B1CC94 /* Chart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chart.m; sourceTree = "<group>"; };
-		48E0A64A1D97D9A100B1CC94 /* YAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAxis.h; sourceTree = "<group>"; };
-		48E0A64B1D97D9A100B1CC94 /* YAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAxis.m; sourceTree = "<group>"; };
-		48E0A64D1D98323500B1CC94 /* Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Section.h; sourceTree = "<group>"; };
-		48E0A64E1D98323500B1CC94 /* Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Section.m; sourceTree = "<group>"; };
-		48E0A6501D98325E00B1CC94 /* LineChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartModel.h; sourceTree = "<group>"; };
-		48E0A6511D98325E00B1CC94 /* LineChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartModel.m; sourceTree = "<group>"; };
 		48E0A6571D98330600B1CC94 /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
 		48E0A6581D98330600B1CC94 /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Date.m; sourceTree = "<group>"; };
 		48E0A65A1D98337400B1CC94 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
@@ -166,7 +140,6 @@
 		48E0A67E1D99723000B1CC94 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		48E0A67F1D99723000B1CC94 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		48E0A6801D99723000B1CC94 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		48E0A6871D9D592400B1CC94 /* back-white-nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-white-nor@2x.png"; sourceTree = "<group>"; };
 		48F636051D94158200721C36 /* Kchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F636091D94158200721C36 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		48F6360B1D94158200721C36 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -256,16 +229,6 @@
 		48E0A6301D97D61200B1CC94 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				48E0A6501D98325E00B1CC94 /* LineChartModel.h */,
-				48E0A6511D98325E00B1CC94 /* LineChartModel.m */,
-				48E0A63E1D97D6B300B1CC94 /* CandleChartModel.h */,
-				48E0A63F1D97D6B300B1CC94 /* CandleChartModel.m */,
-				48E0A6401D97D6B300B1CC94 /* ChartModel.h */,
-				48E0A6411D97D6B300B1CC94 /* ChartModel.m */,
-				48E0A6421D97D6B300B1CC94 /* ColumnChartModel.h */,
-				48E0A6431D97D6B300B1CC94 /* ColumnChartModel.m */,
-				48E0A63B1D97D69200B1CC94 /* AreaChartModel.h */,
-				48E0A63C1D97D69200B1CC94 /* AreaChartModel.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -286,6 +249,7 @@
 		48E0A6531D9832F500B1CC94 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				48DA33C11DA629BC0022C19E /* Formatters */,
 				48E0A6571D98330600B1CC94 /* Date.h */,
 				48E0A6581D98330600B1CC94 /* Date.m */,
 			);
@@ -330,7 +294,6 @@
 		48F635FC1D94158200721C36 = {
 			isa = PBXGroup;
 			children = (
-				48DA33D41DA62E0D0022C19E /* LargeValueFormatter-Bridging-Header.h */,
 				48DA33D31DA62CE80022C19E /* Kchat-Bridging-Header.h */,
 				48DA33D11DA62CBA0022C19E /* Kchat.swift */,
 				48DA33A41DA55CDD0022C19E /* Charts.framework */,
@@ -357,15 +320,11 @@
 				48F6360B1D94158200721C36 /* AppDelegate.h */,
 				48F6360C1D94158200721C36 /* AppDelegate.m */,
 				48F636141D94158200721C36 /* Assets.xcassets */,
-				48E0A6871D9D592400B1CC94 /* back-white-nor@2x.png */,
-				48E0A6471D97D6C200B1CC94 /* Chart.h */,
-				48E0A6481D97D6C200B1CC94 /* Chart.m */,
 				48E0A60A1D97D40D00B1CC94 /* ChartViewController.h */,
 				48E0A60B1D97D40D00B1CC94 /* ChartViewController.m */,
 				48E0A60C1D97D40D00B1CC94 /* ChartViewController.xib */,
 				48DA33AF1DA61D4D0022C19E /* DemoBaseViewController.h */,
 				48DA33B01DA61D4D0022C19E /* DemoBaseViewController.m */,
-				48DA33C11DA629BC0022C19E /* Formatters */,
 				48E0A65D1D98344A00B1CC94 /* indicators.json */,
 				48F636191D94158200721C36 /* Info.plist */,
 				48F6361F1D941BF700721C36 /* KchatViewController.xib */,
@@ -373,14 +332,10 @@
 				48E0A60F1D97D52D00B1CC94 /* lib */,
 				48F636111D94158200721C36 /* Main.storyboard */,
 				48E0A6301D97D61200B1CC94 /* model */,
-				48E0A64D1D98323500B1CC94 /* Section.h */,
-				48E0A64E1D98323500B1CC94 /* Section.m */,
 				48F636081D94158200721C36 /* Supporting Files */,
 				48E0A6531D9832F500B1CC94 /* util */,
 				48F6360E1D94158200721C36 /* ViewController.h */,
 				48F6360F1D94158200721C36 /* ViewController.m */,
-				48E0A64A1D97D9A100B1CC94 /* YAxis.h */,
-				48E0A64B1D97D9A100B1CC94 /* YAxis.m */,
 			);
 			path = Kchat;
 			sourceTree = "<group>";
@@ -484,7 +439,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				48E0A60E1D97D40D00B1CC94 /* ChartViewController.xib in Resources */,
-				48E0A6881D9D592400B1CC94 /* back-white-nor@2x.png in Resources */,
 				48DA33DC1DA649360022C19E /* RadarMarkerView.xib in Resources */,
 				48F636181D94158200721C36 /* LaunchScreen.storyboard in Resources */,
 				48F636151D94158200721C36 /* Assets.xcassets in Resources */,
@@ -504,32 +458,24 @@
 				48DA33CA1DA629BC0022C19E /* DayAxisValueFormatter.m in Sources */,
 				48DA33DD1DA649360022C19E /* XYMarkerView.swift in Sources */,
 				48E0A6381D97D63E00B1CC94 /* CacheHelper.m in Sources */,
-				48E0A64F1D98323500B1CC94 /* Section.m in Sources */,
 				48DA33D21DA62CBA0022C19E /* Kchat.swift in Sources */,
 				48DA33DB1DA649360022C19E /* RadarMarkerView.swift in Sources */,
 				48E0A63A1D97D63E00B1CC94 /* ResourceHelper.m in Sources */,
 				48F636101D94158200721C36 /* ViewController.m in Sources */,
 				48DA33CB1DA629BC0022C19E /* IntAxisValueFormatter.m in Sources */,
-				48E0A6521D98325E00B1CC94 /* LineChartModel.m in Sources */,
-				48E0A63D1D97D69200B1CC94 /* AreaChartModel.m in Sources */,
-				48E0A6491D97D6C200B1CC94 /* Chart.m in Sources */,
 				48E0A6861D99723000B1CC94 /* AFURLSessionManager.m in Sources */,
 				48E0A60D1D97D40D00B1CC94 /* ChartViewController.m in Sources */,
 				48E0A6821D99723000B1CC94 /* AFNetworkReachabilityManager.m in Sources */,
-				48E0A64C1D97D9A100B1CC94 /* YAxis.m in Sources */,
 				48E0A6391D97D63E00B1CC94 /* EncryptHelper.m in Sources */,
 				48E0A6851D99723000B1CC94 /* AFURLResponseSerialization.m in Sources */,
 				48E0A6591D98330600B1CC94 /* Date.m in Sources */,
-				48E0A6441D97D6B300B1CC94 /* CandleChartModel.m in Sources */,
 				48DA33C91DA629BC0022C19E /* DateValueFormatter.m in Sources */,
 				48F6360D1D94158200721C36 /* AppDelegate.m in Sources */,
 				48DA33DA1DA649360022C19E /* BalloonMarker.swift in Sources */,
-				48E0A6451D97D6B300B1CC94 /* ChartModel.m in Sources */,
 				48E0A6831D99723000B1CC94 /* AFSecurityPolicy.m in Sources */,
 				48E0A65C1D98337400B1CC94 /* JSONKit.m in Sources */,
 				48E0A6811D99723000B1CC94 /* AFHTTPSessionManager.m in Sources */,
 				48E0A6841D99723000B1CC94 /* AFURLRequestSerialization.m in Sources */,
-				48E0A6461D97D6B300B1CC94 /* ColumnChartModel.m in Sources */,
 				48DA33B11DA61D4D0022C19E /* DemoBaseViewController.m in Sources */,
 				48F6360A1D94158200721C36 /* main.m in Sources */,
 			);
