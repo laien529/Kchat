@@ -9,13 +9,7 @@
 /* Begin PBXBuildFile section */
 		48DA33A51DA55CDD0022C19E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DA33A41DA55CDD0022C19E /* Charts.framework */; };
 		48DA33A61DA55CDD0022C19E /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48DA33A41DA55CDD0022C19E /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		48DA33AD1DA61D000022C19E /* CandleStickChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA33AB1DA61D000022C19E /* CandleStickChartViewController.m */; };
-		48DA33AE1DA61D000022C19E /* CandleStickChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DA33AC1DA61D000022C19E /* CandleStickChartViewController.xib */; };
 		48DA33B11DA61D4D0022C19E /* DemoBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA33B01DA61D4D0022C19E /* DemoBaseViewController.m */; };
-		48DA33B51DA622140022C19E /* CombinedChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA33B31DA622140022C19E /* CombinedChartViewController.m */; };
-		48DA33B61DA622140022C19E /* CombinedChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DA33B41DA622140022C19E /* CombinedChartViewController.xib */; };
-		48DA33BF1DA6299B0022C19E /* BarChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA33BD1DA6299B0022C19E /* BarChartViewController.m */; };
-		48DA33C01DA6299B0022C19E /* BarChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48DA33BE1DA6299B0022C19E /* BarChartViewController.xib */; };
 		48DA33C91DA629BC0022C19E /* DateValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA33C31DA629BC0022C19E /* DateValueFormatter.m */; };
 		48DA33CA1DA629BC0022C19E /* DayAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA33C51DA629BC0022C19E /* DayAxisValueFormatter.m */; };
 		48DA33CB1DA629BC0022C19E /* IntAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA33C71DA629BC0022C19E /* IntAxisValueFormatter.m */; };
@@ -105,17 +99,8 @@
 /* Begin PBXFileReference section */
 		48DA33981DA55C390022C19E /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		48DA33A41DA55CDD0022C19E /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
-		48DA33AA1DA61D000022C19E /* CandleStickChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CandleStickChartViewController.h; sourceTree = "<group>"; };
-		48DA33AB1DA61D000022C19E /* CandleStickChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CandleStickChartViewController.m; sourceTree = "<group>"; };
-		48DA33AC1DA61D000022C19E /* CandleStickChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CandleStickChartViewController.xib; sourceTree = "<group>"; };
 		48DA33AF1DA61D4D0022C19E /* DemoBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoBaseViewController.h; sourceTree = "<group>"; };
 		48DA33B01DA61D4D0022C19E /* DemoBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoBaseViewController.m; sourceTree = "<group>"; };
-		48DA33B21DA622140022C19E /* CombinedChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CombinedChartViewController.h; sourceTree = "<group>"; };
-		48DA33B31DA622140022C19E /* CombinedChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CombinedChartViewController.m; sourceTree = "<group>"; };
-		48DA33B41DA622140022C19E /* CombinedChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CombinedChartViewController.xib; sourceTree = "<group>"; };
-		48DA33BC1DA6299B0022C19E /* BarChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarChartViewController.h; sourceTree = "<group>"; };
-		48DA33BD1DA6299B0022C19E /* BarChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarChartViewController.m; sourceTree = "<group>"; };
-		48DA33BE1DA6299B0022C19E /* BarChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BarChartViewController.xib; sourceTree = "<group>"; };
 		48DA33C21DA629BC0022C19E /* DateValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateValueFormatter.h; sourceTree = "<group>"; };
 		48DA33C31DA629BC0022C19E /* DateValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateValueFormatter.m; sourceTree = "<group>"; };
 		48DA33C41DA629BC0022C19E /* DayAxisValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayAxisValueFormatter.h; sourceTree = "<group>"; };
@@ -373,20 +358,11 @@
 				48F6360C1D94158200721C36 /* AppDelegate.m */,
 				48F636141D94158200721C36 /* Assets.xcassets */,
 				48E0A6871D9D592400B1CC94 /* back-white-nor@2x.png */,
-				48DA33BC1DA6299B0022C19E /* BarChartViewController.h */,
-				48DA33BD1DA6299B0022C19E /* BarChartViewController.m */,
-				48DA33BE1DA6299B0022C19E /* BarChartViewController.xib */,
-				48DA33AA1DA61D000022C19E /* CandleStickChartViewController.h */,
-				48DA33AB1DA61D000022C19E /* CandleStickChartViewController.m */,
-				48DA33AC1DA61D000022C19E /* CandleStickChartViewController.xib */,
 				48E0A6471D97D6C200B1CC94 /* Chart.h */,
 				48E0A6481D97D6C200B1CC94 /* Chart.m */,
 				48E0A60A1D97D40D00B1CC94 /* ChartViewController.h */,
 				48E0A60B1D97D40D00B1CC94 /* ChartViewController.m */,
 				48E0A60C1D97D40D00B1CC94 /* ChartViewController.xib */,
-				48DA33B21DA622140022C19E /* CombinedChartViewController.h */,
-				48DA33B31DA622140022C19E /* CombinedChartViewController.m */,
-				48DA33B41DA622140022C19E /* CombinedChartViewController.xib */,
 				48DA33AF1DA61D4D0022C19E /* DemoBaseViewController.h */,
 				48DA33B01DA61D4D0022C19E /* DemoBaseViewController.m */,
 				48DA33C11DA629BC0022C19E /* Formatters */,
@@ -512,10 +488,7 @@
 				48DA33DC1DA649360022C19E /* RadarMarkerView.xib in Resources */,
 				48F636181D94158200721C36 /* LaunchScreen.storyboard in Resources */,
 				48F636151D94158200721C36 /* Assets.xcassets in Resources */,
-				48DA33B61DA622140022C19E /* CombinedChartViewController.xib in Resources */,
 				48F636201D941BF700721C36 /* KchatViewController.xib in Resources */,
-				48DA33AE1DA61D000022C19E /* CandleStickChartViewController.xib in Resources */,
-				48DA33C01DA6299B0022C19E /* BarChartViewController.xib in Resources */,
 				48F636131D94158200721C36 /* Main.storyboard in Resources */,
 				48E0A65E1D98344A00B1CC94 /* indicators.json in Resources */,
 			);
@@ -532,14 +505,11 @@
 				48DA33DD1DA649360022C19E /* XYMarkerView.swift in Sources */,
 				48E0A6381D97D63E00B1CC94 /* CacheHelper.m in Sources */,
 				48E0A64F1D98323500B1CC94 /* Section.m in Sources */,
-				48DA33B51DA622140022C19E /* CombinedChartViewController.m in Sources */,
-				48DA33AD1DA61D000022C19E /* CandleStickChartViewController.m in Sources */,
 				48DA33D21DA62CBA0022C19E /* Kchat.swift in Sources */,
 				48DA33DB1DA649360022C19E /* RadarMarkerView.swift in Sources */,
 				48E0A63A1D97D63E00B1CC94 /* ResourceHelper.m in Sources */,
 				48F636101D94158200721C36 /* ViewController.m in Sources */,
 				48DA33CB1DA629BC0022C19E /* IntAxisValueFormatter.m in Sources */,
-				48DA33BF1DA6299B0022C19E /* BarChartViewController.m in Sources */,
 				48E0A6521D98325E00B1CC94 /* LineChartModel.m in Sources */,
 				48E0A63D1D97D69200B1CC94 /* AreaChartModel.m in Sources */,
 				48E0A6491D97D6C200B1CC94 /* Chart.m in Sources */,

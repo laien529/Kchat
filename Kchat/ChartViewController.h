@@ -8,20 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Chart.h"
-#import "CandleStickChartViewController.h"
 #import "DemoBaseViewController.h"
-#import "BarChartViewController.h"
 
 @interface ChartViewController : DemoBaseViewController{
     NSArray<NSString *> *months;
 }
 
-@property (nonatomic,strong) CandleStickChartViewController *candleChart;
-@property (nonatomic,strong) BarChartViewController *barChart;
 @property (nonatomic,strong) NSString *lastTime;
-@property (nonatomic,strong) UILabel *status;
-@property (nonatomic,strong) NSString *req_freq;
-@property (nonatomic,strong) NSString *req_type;
 @property (nonatomic,strong) NSString *req_url;
 @property (nonatomic,strong) NSString *req_security_id;
 

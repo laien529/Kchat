@@ -17,6 +17,7 @@
 
 @interface ChartViewController ()<ChartViewDelegate,IChartAxisValueFormatter>{
     AFHTTPSessionManager *afmanager;
+    NSArray *dataArray;
 }
 @property (nonatomic, strong) IBOutlet BarChartView *barChartView;
 @property (nonatomic, strong) IBOutlet CandleStickChartView *stickChartView;
@@ -29,19 +30,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.req_freq   = @"d";
-    self.req_type   = @"H";
-    self.req_url    = @"http://ichart.yahoo.com/table.csv?s=600019.SS&g=d";
-    months = @[@"2016/09/09",@"2016/09/09",@"2016/09/09",@"2016/09/09",@"2016/09/11"];
-    [self initBarChartView];
-    [self initStickChartView];
+    self.req_url    = @"http://jwindex.hngangxin.com/api/1/data/getKChartResource.json?dataProductId=8&dateRange=90";
+    [self getData];
 }
 
 - (void)initBarChartView {
     [self setupBarLineChartView:_barChartView];
     
     _barChartView.delegate = self;
-    
     _barChartView.drawBarShadowEnabled = NO;
     _barChartView.drawValueAboveBarEnabled = YES;
     _barChartView.maxVisibleCount = 60;
@@ -84,7 +80,7 @@
     l.drawInside = NO;
     l.form = ChartLegendFormDefault;
     l.formSize = 9.0;
-    l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
+//    l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
     l.xEntrySpace = 4.0;
     
     XYMarkerView *marker = [[XYMarkerView alloc]
@@ -127,15 +123,9 @@
 - (void)viewWillAppear:(BOOL)animated{
 }
 
-/*
+
 -(void)getData{
-    self.status.text = @"Loading...";
-    if(_chartMode == 0){
-        [self.candleChart getSection:2].hidden = YES;
-    }else{
-        [self.candleChart getSection:2].hidden = NO;
-    }
-//    NSString *reqURL = [[NSString alloc] initWithFormat:self.req_url];
+    
     NSLog(@"url:%@",self.req_url);
     
     NSURL *url = [NSURL URLWithString:[self.req_url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -144,7 +134,6 @@
     afmanager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
 //    afmanager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/csv", nil];
-//        afmanager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", nil];
 
     [afmanager GET:_req_url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
 
@@ -157,96 +146,24 @@
     }];
 }
 
-- (void)requestFinished:(NSString*)response
-{
-    self.status.text = @"";
-    NSMutableArray *data =[[NSMutableArray alloc] init];
-    NSMutableArray *category =[[NSMutableArray alloc] init];
-    
-    NSString *content = response;
-    NSArray *lines = [content componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
-    NSInteger idx;
-    for (idx = lines.count-1; idx > 0; idx--) {
-        NSString *line = lines[idx];
-        if([line isEqualToString:@""]){
-            continue;
-        }
-        NSArray   *arr = [line componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
-        [category addObject:arr[0]];
+- (void)requestFinished:(NSString*)response{
+
+    NSData* jsonData = [response dataUsingEncoding:NSUTF8StringEncoding];
+
+    NSDictionary *dict = [jsonData objectFromJSONData];
+    NSNumber *resultCode = dict[@"resultCode"];
+    if (resultCode.integerValue == 0) {
+       
+        dataArray = [NSArray arrayWithArray:dict[@"resultEntity"][@"kChartResource"]];
+        [self initStickChartView];
+
+        [self initBarChartView];
+    } else {
         
-        NSMutableArray *item =[[NSMutableArray alloc] init];
-        [item addObject:arr[1]];
-        [item addObject:arr[4]];
-        [item addObject:arr[2]];
-        [item addObject:arr[3]];
-        [item addObject:arr[5]];
-        [data addObject:item];
     }
     
-    if(data.count==0){
-        self.status.text = @"Error!";
-        return;
-    }
-    
-    if (_chartMode == 0) {
-        if([self.req_type isEqualToString:@"T"]){
-//            if(self.timer != nil){
-//                [self.timer invalidate];
-//            }
-            [self.candleChart reset];
-            [self.candleChart clearData];
-            [self.candleChart clearCategory];
-            
-            if([self.req_freq hasSuffix:@"m"]){
-                self.req_type = @"L";
-//                self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getData) userInfo:nil repeats:YES];
-            }
-        }else{
-//            NSString *time = category[0];
-//            if([time isEqualToString:self.lastTime]){
-//                if([time hasSuffix:@"1500"]){
-//                    if(self.timer != nil){
-//                        [self.timer invalidate];
-//                    }
-//                }
-//                return;
-//            }
-//            if ([time hasSuffix:@"1130"] || [time hasSuffix:@"1500"]) {
-//                if(self.tradeStatus == 1){
-//                    self.tradeStatus = 0;
-//                }
-//            }else{
-//                self.tradeStatus = 1;
-//            }
-        }
-    }else{
-//        if(self.timer != nil){
-//            [self.timer invalidate];
-//        }
-        [self.candleChart reset];
-        [self.candleChart clearData];
-        [self.candleChart clearCategory];
-    }
-    
-    self.lastTime = [category lastObject];
-    
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [self generateData:dic From:data];
-    [self setData:dic];
-    
-    if(_chartMode == 0){
-        [self setCategory:category];
-    }else{
-        NSMutableArray *cate = [[NSMutableArray alloc] init];
-        for(int i=60;i<category.count;i++){
-            [cate addObject:category[i]];
-        }
-        [self setCategory:cate];
-    }
-    
-    [self.candleChart setNeedsDisplay];
 }
-*/
+
 
 /*
 -(void)setData:(NSDictionary *)dic{
@@ -319,7 +236,7 @@
         return;
     }
     
-    [self setBarDataCount:30 range:30];
+    [self setBarDataCount:dataArray.count range:dataArray.count];
 }
 - (void)updateStickChartData
 {
@@ -329,10 +246,10 @@
         return;
     }
     
-    [self setStickDataCount:80 + 1 range:80];
+    [self setStickDataCount:dataArray.count range:dataArray.count];
 }
 
-- (void)setBarDataCount:(int)count range:(double)range
+- (void)setBarDataCount:(NSInteger)count range:(double)range
 {
     double start = 0.0;
     
@@ -341,10 +258,12 @@
     
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
-    for (int i = start; i < start + count + 1; i++)
+    for (int i = start; i < count; i++)
     {
-        double mult = (range + 1);
-        double val = (double) (arc4random_uniform(mult));
+        NSDictionary *dataDic = [dataArray objectAtIndex:i];
+
+//        double mult = (range + 1);
+        double val = ((NSNumber*)dataDic[@"volume"]).doubleValue;
         [yVals addObject:[[BarChartDataEntry alloc] initWithX:(double)i + 1.0 y:val]];
     }
     
@@ -358,14 +277,14 @@
     }
     else
     {
-        set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@"The year 2017"];
+        set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@""];
         [set1 setColor:[UIColor blueColor]];
         
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
         [dataSets addObject:set1];
         
         BarChartData *data = [[BarChartData alloc] initWithDataSets:dataSets];
-        [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:10.f]];
+        [data setDrawValues:NO];
         
         data.barWidth = 0.9f;
         
@@ -374,22 +293,27 @@
 
 }
 
-- (void)setStickDataCount:(int)count range:(double)range
+- (void)setStickDataCount:(NSInteger)count range:(double)range
 {
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
-    
+    NSMutableArray *xVals1 = [[NSMutableArray alloc] init];
     for (int i = 0; i < count; i++)
     {
-        double mult = (range + 1);
-        double val = (double) (arc4random_uniform(40)) + mult;
-        double high = (double) (arc4random_uniform(9)) + 8.0;
-        double low = (double) (arc4random_uniform(9)) + 8.0;
-        double open = (double) (arc4random_uniform(6)) + 1.0;
-        double close = (double) (arc4random_uniform(6)) + 1.0;
-        BOOL even = i % 2 == 0;
-        [yVals1 addObject:[[CandleChartDataEntry alloc] initWithX:i shadowH:val + high shadowL:val - low open:even ? val + open : val - open close:even ? val - close : val + close]];
+        NSDictionary *dataDic = [dataArray objectAtIndex:i];
+
+//        double mult = (range + 1);
+//        double val = ((NSNumber*)dataDic[@"high"]).doubleValue + mult;
+        double high = ((NSNumber*)dataDic[@"high"]).doubleValue;
+        double low = ((NSNumber*)dataDic[@"low"]).doubleValue;
+        double open = ((NSNumber*)dataDic[@"open"]).doubleValue;
+        double close = ((NSNumber*)dataDic[@"close"]).doubleValue;
+//        BOOL even = i % 2 == 0;
+        [yVals1 addObject:[[CandleChartDataEntry alloc] initWithX:i shadowH:high shadowL:low open:open close:close]];
+        NSString *dateString = dataDic[@"date"];
+        [xVals1 addObject:dateString];
+
     }
-    
+    months = [NSArray arrayWithArray:xVals1];
     CandleChartDataSet *set1 = [[CandleChartDataSet alloc] initWithValues:yVals1 label:@"Data Set"];
     set1.axisDependency = AxisDependencyLeft;
     [set1 setColor:[UIColor colorWithWhite:80/255.f alpha:1.f]];
@@ -488,6 +412,11 @@
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry highlight:(ChartHighlight * __nonnull)highlight
 {
     NSLog(@"chartValueSelected");
+    NSInteger clickIndex = entry.x;
+    if (clickIndex < dataArray.count) {
+        NSDictionary *dict = [dataArray objectAtIndex:clickIndex];
+        
+    }
 }
 
 - (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView
