@@ -8,7 +8,6 @@
 
 #import "ChartViewController.h"
 #import "AFNetworking.h"
-#import "ResourceHelper.h"
 #import "JSONKit.h"
 #import "Kchat-Swift.h"
 #import "DayAxisValueFormatter.h"
@@ -164,42 +163,6 @@
     
 }
 
-
-/*
--(void)setData:(NSDictionary *)dic{
-    [self.candleChart appendToData:dic[@"price"] forName:@"price"];
-    [self.candleChart appendToData:dic[@"vol"] forName:@"vol"];
-    
-    [self.candleChart appendToData:dic[@"ma10"] forName:@"ma10"];
-    [self.candleChart appendToData:dic[@"ma30"] forName:@"ma30"];
-    [self.candleChart appendToData:dic[@"ma60"] forName:@"ma60"];
-    
-    [self.candleChart appendToData:dic[@"rsi6"] forName:@"rsi6"];
-    [self.candleChart appendToData:dic[@"rsi12"] forName:@"rsi12"];
-    
-    [self.candleChart appendToData:dic[@"wr"] forName:@"wr"];
-    [self.candleChart appendToData:dic[@"vr"] forName:@"vr"];
-    
-    [self.candleChart appendToData:dic[@"kdj_k"] forName:@"kdj_k"];
-    [self.candleChart appendToData:dic[@"kdj_d"] forName:@"kdj_d"];
-    [self.candleChart appendToData:dic[@"kdj_j"] forName:@"kdj_j"];
-    
-    NSMutableDictionary *serie = [self.candleChart getSerie:@"price"];
-    if(serie == nil)
-        return;
-    if(self.chartMode == 1){
-        serie[@"type"] = @"candle";
-    }else{
-        serie[@"type"] = @"line";
-    }
-}
-
--(void)setCategory:(NSArray *)category{
-    [self.candleChart appendToCategory:category forName:@"price"];
-    [self.candleChart appendToCategory:category forName:@"line"];
-    
-}
-*/
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight || interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }

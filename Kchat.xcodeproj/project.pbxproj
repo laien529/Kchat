@@ -20,9 +20,6 @@
 		48DA33DD1DA649360022C19E /* XYMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA33D91DA649360022C19E /* XYMarkerView.swift */; };
 		48E0A60D1D97D40D00B1CC94 /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A60B1D97D40D00B1CC94 /* ChartViewController.m */; };
 		48E0A60E1D97D40D00B1CC94 /* ChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E0A60C1D97D40D00B1CC94 /* ChartViewController.xib */; };
-		48E0A6381D97D63E00B1CC94 /* CacheHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6331D97D63E00B1CC94 /* CacheHelper.m */; };
-		48E0A6391D97D63E00B1CC94 /* EncryptHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6351D97D63E00B1CC94 /* EncryptHelper.m */; };
-		48E0A63A1D97D63E00B1CC94 /* ResourceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6371D97D63E00B1CC94 /* ResourceHelper.m */; };
 		48E0A6591D98330600B1CC94 /* Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A6581D98330600B1CC94 /* Date.m */; };
 		48E0A65C1D98337400B1CC94 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A65B1D98337400B1CC94 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		48E0A6611D9834E700B1CC94 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E0A6601D9834E700B1CC94 /* CFNetwork.framework */; };
@@ -107,12 +104,6 @@
 		48E0A60A1D97D40D00B1CC94 /* ChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartViewController.h; sourceTree = "<group>"; };
 		48E0A60B1D97D40D00B1CC94 /* ChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewController.m; sourceTree = "<group>"; };
 		48E0A60C1D97D40D00B1CC94 /* ChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartViewController.xib; sourceTree = "<group>"; };
-		48E0A6321D97D63E00B1CC94 /* CacheHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheHelper.h; sourceTree = "<group>"; };
-		48E0A6331D97D63E00B1CC94 /* CacheHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheHelper.m; sourceTree = "<group>"; };
-		48E0A6341D97D63E00B1CC94 /* EncryptHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptHelper.h; sourceTree = "<group>"; };
-		48E0A6351D97D63E00B1CC94 /* EncryptHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptHelper.m; sourceTree = "<group>"; };
-		48E0A6361D97D63E00B1CC94 /* ResourceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceHelper.h; sourceTree = "<group>"; };
-		48E0A6371D97D63E00B1CC94 /* ResourceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceHelper.m; sourceTree = "<group>"; };
 		48E0A6571D98330600B1CC94 /* Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Date.h; sourceTree = "<group>"; };
 		48E0A6581D98330600B1CC94 /* Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Date.m; sourceTree = "<group>"; };
 		48E0A65A1D98337400B1CC94 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
@@ -219,7 +210,6 @@
 				48E0A6731D99723000B1CC94 /* AFNetworking */,
 				48E0A65A1D98337400B1CC94 /* JSONKit.h */,
 				48E0A65B1D98337400B1CC94 /* JSONKit.m */,
-				48E0A6311D97D63E00B1CC94 /* helper */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -229,19 +219,6 @@
 			children = (
 			);
 			name = model;
-			sourceTree = "<group>";
-		};
-		48E0A6311D97D63E00B1CC94 /* helper */ = {
-			isa = PBXGroup;
-			children = (
-				48E0A6321D97D63E00B1CC94 /* CacheHelper.h */,
-				48E0A6331D97D63E00B1CC94 /* CacheHelper.m */,
-				48E0A6341D97D63E00B1CC94 /* EncryptHelper.h */,
-				48E0A6351D97D63E00B1CC94 /* EncryptHelper.m */,
-				48E0A6361D97D63E00B1CC94 /* ResourceHelper.h */,
-				48E0A6371D97D63E00B1CC94 /* ResourceHelper.m */,
-			);
-			path = helper;
 			sourceTree = "<group>";
 		};
 		48E0A6531D9832F500B1CC94 /* util */ = {
@@ -453,16 +430,13 @@
 			files = (
 				48DA33CA1DA629BC0022C19E /* DayAxisValueFormatter.m in Sources */,
 				48DA33DD1DA649360022C19E /* XYMarkerView.swift in Sources */,
-				48E0A6381D97D63E00B1CC94 /* CacheHelper.m in Sources */,
 				48DA33D21DA62CBA0022C19E /* Kchat.swift in Sources */,
 				48DA33DB1DA649360022C19E /* RadarMarkerView.swift in Sources */,
-				48E0A63A1D97D63E00B1CC94 /* ResourceHelper.m in Sources */,
 				48F636101D94158200721C36 /* ViewController.m in Sources */,
 				48DA33CB1DA629BC0022C19E /* IntAxisValueFormatter.m in Sources */,
 				48E0A6861D99723000B1CC94 /* AFURLSessionManager.m in Sources */,
 				48E0A60D1D97D40D00B1CC94 /* ChartViewController.m in Sources */,
 				48E0A6821D99723000B1CC94 /* AFNetworkReachabilityManager.m in Sources */,
-				48E0A6391D97D63E00B1CC94 /* EncryptHelper.m in Sources */,
 				48E0A6851D99723000B1CC94 /* AFURLResponseSerialization.m in Sources */,
 				48E0A6591D98330600B1CC94 /* Date.m in Sources */,
 				48DA33C91DA629BC0022C19E /* DateValueFormatter.m in Sources */,
