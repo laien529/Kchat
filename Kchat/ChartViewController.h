@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "DemoBaseViewController.h"
 
+@protocol KchartViewDelegate <NSObject>
+
+- (void)didSelectChart:(NSDictionary*)selectedDicData;
+
+@end
+
 @interface ChartViewController : DemoBaseViewController{
     NSArray<NSString *> *months;
 }
@@ -16,6 +22,8 @@
 @property (nonatomic,strong) NSString *lastTime;
 @property (nonatomic,strong) NSString *req_url;
 @property (nonatomic,strong) NSString *req_security_id;
+@property (nonatomic,weak) id<KchartViewDelegate> kChartViewDelegate;
+
 
 //-(void)initChart;
 //-(void)getData;

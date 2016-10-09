@@ -8,7 +8,7 @@
 //
 //  https://github.com/danielgindi/Charts
 //
-
+#define formatString(obj1,obj2) [NSString stringWithFormat:@"%@%@",obj1,obj2]
 #import <UIKit/UIKit.h>
 #import <Charts/Charts-swift.h>
 

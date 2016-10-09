@@ -96,9 +96,7 @@
 
 - (void)initStickChartView{
     _stickChartView.delegate = self;
-    
     _stickChartView.chartDescription.enabled = NO;
-    
     _stickChartView.maxVisibleCount = 30;
     _stickChartView.pinchZoomEnabled = NO;
     _stickChartView.drawGridBackgroundEnabled = NO;
@@ -154,13 +152,22 @@
     if (resultCode.integerValue == 0) {
        
         dataArray = [NSArray arrayWithArray:dict[@"resultEntity"][@"kChartResource"]];
-        [self initStickChartView];
+        if (dataArray.count > 0) {
+            
+            if ([dataArray.firstObject isKindOfClass:[NSDictionary class]]) {
+                if (_kChartViewDelegate && [_kChartViewDelegate respondsToSelector:@selector(didSelectChart:)]) {
+                    [_kChartViewDelegate didSelectChart:dataArray.firstObject];
 
-        [self initBarChartView];
+                }
+            }
+            [self initStickChartView];
+            
+            [self initBarChartView];
+        }
+        
     } else {
         
     }
-    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -377,8 +384,10 @@
     NSLog(@"chartValueSelected");
     NSInteger clickIndex = entry.x;
     if (clickIndex < dataArray.count) {
-        NSDictionary *dict = [dataArray objectAtIndex:clickIndex];
-        
+        if (_kChartViewDelegate && [_kChartViewDelegate respondsToSelector:@selector(didSelectChart:)]) {
+            NSDictionary *dict = [dataArray objectAtIndex:clickIndex];
+            [_kChartViewDelegate didSelectChart:dict];
+        }
     }
 }
 
