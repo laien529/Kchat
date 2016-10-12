@@ -11,6 +11,7 @@
 #import "JSONKit.h"
 #import "Kchat-Swift.h"
 #import "DayAxisValueFormatter.h"
+#import "MBProgressHUD.h"
 
 #define ITEM_COUNT 12
 
@@ -82,14 +83,14 @@
 //    l.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:11.f];
     l.xEntrySpace = 4.0;
     
-    XYMarkerView *marker = [[XYMarkerView alloc]
-                            initWithColor: [UIColor colorWithWhite:180/255. alpha:1.0]
-                            font: [UIFont systemFontOfSize:12.0]
-                            textColor: UIColor.whiteColor
-                            insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)
-                            xAxisValueFormatter: _barChartView.xAxis.valueFormatter];
-    marker.chartView = _barChartView;
-    marker.minimumSize = CGSizeMake(80.f, 40.f);
+//    XYMarkerView *marker = [[XYMarkerView alloc]
+//                            initWithColor: [UIColor colorWithWhite:180/255. alpha:1.0]
+//                            font: [UIFont systemFontOfSize:12.0]
+//                            textColor: UIColor.whiteColor
+//                            insets: UIEdgeInsetsMake(8.0, 8.0, 20.0, 8.0)
+//                            xAxisValueFormatter: _barChartView.xAxis.valueFormatter];
+//    marker.chartView = _barChartView;
+//    marker.minimumSize = CGSizeMake(80.f, 40.f);
 //    _barChartView.marker = marker;
     [self updateBarChartData];
 }
@@ -131,15 +132,20 @@
     afmanager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
 //    afmanager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/csv", nil];
-
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [afmanager GET:_req_url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
 
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
         NSString *res = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"responseObject==%@",responseObject);
+//        NSLog(@"responseObject==%@",responseObject);
         [self requestFinished:res];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
     }];
 }
 

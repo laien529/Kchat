@@ -22,5 +22,6 @@
 @property (nonatomic,weak) IBOutlet UILabel *lowLabel;
 @property (nonatomic,weak) IBOutlet UILabel *volLabel;
 
+- (IBAction)back:(id)sender;
 @end
 

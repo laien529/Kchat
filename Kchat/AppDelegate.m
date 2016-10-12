@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "TestViewController.h"
 #import <Charts/Charts-Swift.h>
 @interface AppDelegate ()
 
@@ -21,7 +21,7 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    ViewController *viewController = [[ViewController alloc]initWithNibName:@"KchatViewController" bundle:nil];
+    TestViewController *viewController = [[TestViewController alloc]initWithNibName:@"TestViewController" bundle:nil];
     self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
     return YES;

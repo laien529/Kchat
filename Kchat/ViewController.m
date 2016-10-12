@@ -44,6 +44,12 @@
     return UIInterfaceOrientationMaskLandscape;
 }
 
+- (void)back:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
 - (BOOL)shouldAutorotate{
     return YES;
 }

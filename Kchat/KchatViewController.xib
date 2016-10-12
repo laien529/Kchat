@@ -41,11 +41,15 @@
                                 <constraint firstAttribute="width" constant="44" id="NmK-m4-GMH"/>
                             </constraints>
                             <state key="normal" image="back-white-nor.png"/>
+                            <connections>
+                                <action selector="back:" destination="-1" eventType="touchUpInside" id="oT1-t8-uWi"/>
+                            </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="某某某某现货" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGI-qg-Z4R">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="某某某某现货" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGI-qg-Z4R">
+                            <frame key="frameInset" minX="44" minY="11" width="61" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="22" id="mip-dx-x1k"/>
-                                <constraint firstAttribute="width" constant="115" id="zTA-fp-XwN"/>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="115" id="zTA-fp-XwN"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -62,9 +66,10 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUV-ES-pgv">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zUV-ES-pgv">
+                            <frame key="frameInset" minX="174" minY="13" width="40" height="20"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="80" id="Qjf-na-fUc"/>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="Qjf-na-fUc"/>
                                 <constraint firstAttribute="height" constant="20" id="enj-pV-uqK"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -87,7 +92,7 @@
                         <constraint firstAttribute="trailing" secondItem="cal-ph-ISO" secondAttribute="trailing" constant="12" id="5Sz-It-e8g"/>
                         <constraint firstItem="zUV-ES-pgv" firstAttribute="leading" secondItem="SGI-qg-Z4R" secondAttribute="trailing" constant="20" id="9pe-zK-xra"/>
                         <constraint firstAttribute="height" constant="44" id="DXT-Jq-GRf"/>
-                        <constraint firstItem="UHM-g9-Hto" firstAttribute="leading" secondItem="zUV-ES-pgv" secondAttribute="trailing" id="DYr-3p-6mZ"/>
+                        <constraint firstItem="UHM-g9-Hto" firstAttribute="leading" secondItem="zUV-ES-pgv" secondAttribute="trailing" constant="20" id="DYr-3p-6mZ"/>
                         <constraint firstItem="SGI-qg-Z4R" firstAttribute="centerY" secondItem="VqR-ql-jDq" secondAttribute="centerY" id="DfP-w3-V3o"/>
                         <constraint firstItem="Ipf-pd-iYj" firstAttribute="leading" secondItem="VqR-ql-jDq" secondAttribute="leading" id="Kd3-xN-fm4"/>
                         <constraint firstItem="UHM-g9-Hto" firstAttribute="baseline" secondItem="zUV-ES-pgv" secondAttribute="baseline" id="Qyf-0G-DVn"/>
@@ -256,7 +261,7 @@
                     <exclude reference="yeh-xq-lbA"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="319" y="122"/>
+            <point key="canvasLocation" x="318.5" y="121.5"/>
         </view>
     </objects>
     <resources>
