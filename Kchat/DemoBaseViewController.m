@@ -147,10 +147,8 @@
 
 #pragma mark - Actions
 
-- (IBAction)optionsButtonTapped:(id)sender
-{
-    if (_optionsTableView)
-    {
+- (IBAction)optionsButtonTapped:(id)sender {
+    if (_optionsTableView) {
         [_optionsTableView removeFromSuperview];
         self.optionsTableView = nil;
         return;
@@ -182,40 +180,32 @@
 
 #pragma mark - UITableViewDelegate, UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    if (tableView == _optionsTableView)
-    {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (tableView == _optionsTableView) {
         return 1;
     }
     
     return 0;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (tableView == _optionsTableView)
-    {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == _optionsTableView) {
         return self.options.count;
     }
     
     return 0;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (tableView == _optionsTableView)
-    {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == _optionsTableView) {
         return 40.0;
     }
     
     return 44.0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (tableView == _optionsTableView)
-    {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == _optionsTableView) {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         if (!cell)
         {
@@ -233,8 +223,7 @@
     return nil;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == _optionsTableView)
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -251,13 +240,11 @@
 
 #pragma mark - Stubs for chart view
 
-- (void)updateChartData
-{
+- (void)updateChartData {
     // Override this
 }
 
-- (void)setupPieChartView:(PieChartView *)chartView
-{
+- (void)setupPieChartView:(PieChartView *)chartView {
     chartView.usePercentValuesEnabled = YES;
     chartView.drawSlicesUnderHoleEnabled = NO;
     chartView.holeRadiusPercent = 0.58;
@@ -301,14 +288,12 @@
     l.yOffset = 0.0;
 }
 
-- (void)setupRadarChartView:(RadarChartView *)chartView
-{
+- (void)setupRadarChartView:(RadarChartView *)chartView {
     chartView.chartDescription.enabled = NO;
 }
 
-- (void)setupBarLineChartView:(BarLineChartViewBase *)chartView
-{
-    chartView.chartDescription.enabled = NO;
+- (void)setupBarLineChartView:(BarLineChartViewBase *)chartView {
+//    chartView.chartDescription.enabled = NO;
     
     chartView.drawGridBackgroundEnabled = NO;
     
