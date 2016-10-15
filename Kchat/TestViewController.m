@@ -29,11 +29,21 @@
     
     ViewController *viewController = [[ViewController alloc]initWithNibName:@"KchatViewController" bundle:nil];
 //    [[viewController.view layer] addAnimation:animation forKey:@"SwitchToView"];
+    [viewController setProductId:@"2"];
     viewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:viewController animated:YES completion:^{
         
     }];
 }
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (BOOL)shouldAutorotate{
+    return YES;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

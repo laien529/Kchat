@@ -15,7 +15,7 @@
 
 @end
 
-@interface ChartViewController : DemoBaseViewController {
+@interface ChartViewController : UIViewController {
     NSArray<NSString *> *months;
 }
 
@@ -24,5 +24,5 @@
 @property (nonatomic,strong) NSString *req_security_id;
 @property (nonatomic,weak) id<KchartViewDelegate> kChartViewDelegate;
 
-
+- (id)initWithProductId:(NSString*)productId dataRange:(NSString*)dataRange;
 @end

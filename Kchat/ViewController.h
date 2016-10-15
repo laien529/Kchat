@@ -21,6 +21,8 @@
 @property (nonatomic,weak) IBOutlet UILabel *highLabel;
 @property (nonatomic,weak) IBOutlet UILabel *lowLabel;
 @property (nonatomic,weak) IBOutlet UILabel *volLabel;
+@property (nonatomic,strong) NSString *productId;
+@property (nonatomic,strong) NSString *dataRange;
 
 - (IBAction)back:(id)sender;
 @end
