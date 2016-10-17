@@ -30,12 +30,12 @@
             <constraints>
                 <constraint firstItem="8Ca-aF-qsd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="L98-wo-nMu"/>
                 <constraint firstItem="8Ca-aF-qsd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ur2-tp-2yk"/>
-                <constraint firstItem="fvV-Lv-idy" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1/4" id="VBz-7Z-4CU"/>
+                <constraint firstItem="fvV-Lv-idy" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1/3" id="VBz-7Z-4CU"/>
                 <constraint firstItem="fvV-Lv-idy" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="dQV-O6-ZxX"/>
                 <constraint firstItem="8Ca-aF-qsd" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="eP9-JP-0Dv"/>
                 <constraint firstItem="fvV-Lv-idy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kMo-m9-a3d"/>
                 <constraint firstItem="fvV-Lv-idy" firstAttribute="top" secondItem="8Ca-aF-qsd" secondAttribute="bottom" id="n3B-m9-6vU"/>
-                <constraint firstItem="8Ca-aF-qsd" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="3/4" id="spE-Kr-nc8"/>
+                <constraint firstItem="8Ca-aF-qsd" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="2/3" id="spE-Kr-nc8"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>

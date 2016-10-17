@@ -128,7 +128,7 @@
     _stickChartView.scaleXEnabled = YES;
     _stickChartView.dragEnabled = YES;
     _stickChartView.doubleTapToZoomEnabled = NO;
-    
+
     //x轴
     ChartXAxis *xAxis = _stickChartView.xAxis;
     xAxis.drawLabelsEnabled = YES;
@@ -153,7 +153,7 @@
     leftAxisFormatter.maximumFractionDigits = 1;
     leftAxisFormatter.positiveSuffix = @"";
     leftAxis.valueFormatter = leftAxisFormatter;
-    
+    leftAxis.spaceTop = 0;
     //右Y轴
     ChartYAxis *rightAxis = _stickChartView.rightAxis;
     rightAxis.labelCount = 4;
@@ -189,7 +189,7 @@
     xAxis.drawLabelsEnabled = NO;
     xAxis.drawGridLinesEnabled = NO;
     xAxis.labelPosition = XAxisLabelPositionBottom;
-    xAxis.labelTextColor = [UIColor grayColor];
+    xAxis.labelTextColor = [UIColor darkGrayColor];
     xAxis.gridColor = [UIColor grayColor];
     
     
@@ -199,18 +199,17 @@
     
     //Y轴 左
     ChartYAxis *leftAxis = _barChartView.leftAxis;
-    leftAxis.axisMinValue = 0;
     leftAxis.drawGridLinesEnabled = YES;
     leftAxis.drawAxisLineEnabled = NO;
-    leftAxis.labelTextColor = [UIColor grayColor];
+    leftAxis.labelTextColor = [UIColor darkGrayColor];
     leftAxis.drawLabelsEnabled = YES;
-    [leftAxis setGridLineDashLengths:@[@(9), @(3), @(0)]];
+    [leftAxis setGridLineDashLengths:@[@(3), @(2), @(0)]];
     leftAxis.labelCount = 2;
-    leftAxis.axisMinValue = 0;
+//    leftAxis.axisMinValue = 0;
     leftAxis.showOnlyMinMaxEnabled = NO;
     leftAxis.valueFormatter = leftAxisFormatter;
     leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
-    leftAxis.spaceTop = 5;
+//    leftAxis.spaceTop = 5;
     
     //    _barChartView.rightAxis.enabled = NO;
     _barChartView.rightAxis.drawAxisLineEnabled = NO;
@@ -241,10 +240,11 @@
 //    months = [NSArray arrayWithArray:xVals1];
     
     CandleChartDataSet *set1 = [[CandleChartDataSet alloc] initWithYVals:yVals1 label:@"kchart"];
+    set1.barSpace = 0.1;
     set1.drawHorizontalHighlightIndicatorEnabled = NO;
     set1.highlightEnabled = YES;
     set1.showCandleBar = YES;
-    set1.highlightColor = [UIColor blackColor];
+    set1.highlightColor = [UIColor darkGrayColor];
     set1.valueFont = [UIFont systemFontOfSize:10.0f];
     set1.drawValuesEnabled = NO;
     set1.decreasingColor = [UIColor colorWithRed:211/255.f green:61/255.f blue:50/255.f alpha:1.f];
@@ -263,16 +263,14 @@
 
     ChartViewPortHandler *viewPortHandlerBar = _stickChartView.viewPortHandler;
     [viewPortHandlerBar setMaximumScaleX:6];
-    [viewPortHandlerBar setMinimumScaleX:1];
-//    [_stickChartView setVisibleXRangeMinimum:60];
-    [_stickChartView setVisibleXRangeMaximum:60];
+    [_stickChartView setVisibleXRangeMaximum:180];
+    [viewPortHandlerBar refreshWithNewMatrix:[viewPortHandlerBar setZoomWithScaleX:3 scaleY:1] chart:_stickChartView invalidate:YES];
+
     [_stickChartView moveViewToX:dataArray.count - 1];
     [_stickChartView notifyDataSetChanged];
     [_stickChartView invalidateIntrinsicContentSize];
 
 }
-
-
 
 - (void)setBarDataCount{
     
@@ -294,6 +292,7 @@
     set1.highlightEnabled = YES;
     set1.highlightAlpha = 1;
     set1.highlightColor = [UIColor darkGrayColor];
+    set1.highlightLineWidth = 0.5;
     set1.drawValuesEnabled = NO;
     [set1 setColor:[UIColor colorWithRed:145/255. green:199/255. blue:147/255. alpha:1]];
     
@@ -304,16 +303,13 @@
     
     ChartViewPortHandler *viewPortHandlerBar = _barChartView.viewPortHandler;
     [viewPortHandlerBar setMaximumScaleX:6];
-    [viewPortHandlerBar setMinimumScaleX:1];
+    [_barChartView setVisibleXRangeMaximum:180];
+    [viewPortHandlerBar refreshWithNewMatrix:[viewPortHandlerBar setZoomWithScaleX:3 scaleY:1] chart:_barChartView invalidate:YES];
 
-//    viewPortHandlerBar.touchMatrix = CGAffineTransformMakeScale(3, 1);
-//    [viewPortHandlerBar setMinimumScaleX:1];
-//    [_barChartView setVisibleXRangeMinimum:60];
-    [_barChartView setVisibleXRangeMaximum:60];
     
     [_barChartView moveViewToX:dataArray.count - 1];
-    [_barChartView notifyDataSetChanged];
     [_barChartView invalidateIntrinsicContentSize];
+    [_barChartView setNeedsDisplay];
 
 }
 
@@ -323,14 +319,19 @@
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight {
     NSLog(@"chartValueSelected");
+    if (chartView == _stickChartView) {
+        [_barChartView highlightValueWithXIndex:entry.xIndex dataSetIndex:dataSetIndex callDelegate:NO];
+//        [_barChartView setNeedsDisplay];
 
-//    if (chartView == _barChartView) {
-//        return;
-//    }
+
+    } else {
+        [_stickChartView highlightValueWithXIndex:entry.xIndex dataSetIndex:dataSetIndex callDelegate:NO];
+//        [_stickChartView setNeedsDisplay];
+
+
+    }
     NSInteger clickIndex = entry.xIndex;
-//    [_barChartView. objectAtIndex:clickIndex];
-//    [_barChartView highlightValueWithX:6 dataSetIndex:clickIndex callDelegate:NO];
-//    _stickChartView.dragEnabled = NO;
+
     dispatch_main_sync_safe(^(){
         if (clickIndex < dataArray.count) {
             if (_kChartViewDelegate && [_kChartViewDelegate respondsToSelector:@selector(didSelectChart:)]) {
@@ -354,16 +355,9 @@
         
         srcChart = _stickChartView;
         dstChart = _barChartView;
-//        [_barChartView zoom:scaleX scaleY:scaleY x:_barChartView.center.x y:_barChartView.center.y];
-//        [_barChartView.viewPortHandler setZoomWithScaleX:scaleY scaleY:scaleY];
-//        [_barChartView setNeedsDisplay];
-
-
-
     }else{
         srcChart = _barChartView;
         dstChart = _stickChartView;
-//        [_stickChartView zoom:scaleX scaleY:scaleY x:0 y:0];
     }
     [self syncCharts];
 
@@ -377,36 +371,13 @@
         
         srcChart = _stickChartView;
         dstChart = _barChartView;
-        //        [_barChartView zoom:scaleX scaleY:scaleY x:_barChartView.center.x y:_barChartView.center.y];
-        //        [_barChartView.viewPortHandler setZoomWithScaleX:scaleY scaleY:scaleY];
-        //        [_barChartView setNeedsDisplay];
-        
-        
         
     }else{
         srcChart = _barChartView;
         dstChart = _stickChartView;
-        //        [_stickChartView zoom:scaleX scaleY:scaleY x:0 y:0];
     }
+    
     [self syncCharts];
-    return;
-    
-    
-    if (chartView == _stickChartView) {
-//        [_barChartView.delecgate chartTranslated:_barChartView dX:dX dY:dY];
-        [_barChartView setNeedsDisplay];
-        if (dX < 0) {
-
-        } else {
-            
-        }
-//        [_barChartView setNeedsDisplay];
-        NSLog(@"S======DX:%f DY:%f",dX,dY);
-    }else{
-        NSLog(@"B======DX:%f DY:%f",dX,dY);
-
-//        [_stickChartView.delegate chartTranslated:_stickChartView dX:dX dY:dY];
-    }
 }
 
 - (void)syncCharts {
@@ -429,7 +400,9 @@
 //}
 
 /*设置量表对齐*/
-- (void) setOffSet{return;
+- (void) setOffSet{
+    
+    
     float lineLeft = _stickChartView.viewPortHandler.offsetLeft;
     float barLeft = _barChartView.viewPortHandler.offsetLeft;
     float lineRight = _stickChartView.viewPortHandler.offsetRight;
