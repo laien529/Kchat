@@ -468,6 +468,22 @@ SWIFT_CLASS_NAMED("AxisBase")
 */
 @property (nonatomic, readonly) BOOL isDrawLimitLinesBehindDataEnabled;
 /**
+  Extra spacing for \code
+  axisMinimum
+  \endcode to be added to automatically calculated \code
+  axisMinimum
+  \endcode
+*/
+@property (nonatomic) double spaceMin;
+/**
+  Extra spacing for \code
+  axisMaximum
+  \endcode to be added to automatically calculated \code
+  axisMaximum
+  \endcode
+*/
+@property (nonatomic) double spaceMax;
+/**
   the total range of values this axis covers
 */
 @property (nonatomic) double axisRange;
@@ -540,7 +556,7 @@ SWIFT_CLASS_NAMED("AxisBase")
   The maximum value for this axis.
   If set, this value will not be calculated automatically depending on the provided data.
   Use \code
-  resetCustomAxisMin()
+  resetCustomAxisMax()
   \endcode to undo this.
 */
 @property (nonatomic) double axisMaximum;
@@ -1102,42 +1118,51 @@ SWIFT_PROTOCOL("_TtP6Charts13IChartDataSet_")
 */
 - (ChartDataEntry * _Nullable)entryForIndex:(NSInteger)i;
 /**
-  \param x the x-value
+  \param xValue the x-value
+
+  \param closestToY If there are multiple y-values for the specified x-value,
 
   \param rounding determine whether to round up/down/closest if there is no Entry matching the provided x-value
 
 
   returns:
   The first Entry object found at the given x-value with binary search.
-  If the no Entry at the specifed x-value is found, this method returns the Entry at the closest x-pox.
+  If the no Entry at the specified x-value is found, this method returns the Entry at the closest x-value according to the rounding.
   nil if no Entry object at that x-value.
 */
-- (ChartDataEntry * _Nullable)entryForXValue:(double)x rounding:(enum ChartDataSetRounding)rounding;
+- (ChartDataEntry * _Nullable)entryForXValue:(double)xValue closestToY:(double)yValue rounding:(enum ChartDataSetRounding)rounding;
 /**
+  \param xValue the x-value
+
+  \param closestToY If there are multiple y-values for the specified x-value,
+
 
   returns:
   The first Entry object found at the given x-value with binary search.
-  If the no Entry at the specifed x-value is found, this method returns the Entry at the closest x-value.
+  If the no Entry at the specified x-value is found, this method returns the Entry at the closest x-value.
   nil if no Entry object at that x-value.
 */
-- (ChartDataEntry * _Nullable)entryForXValue:(double)x;
+- (ChartDataEntry * _Nullable)entryForXValue:(double)xValue closestToY:(double)yValue;
 /**
 
   returns:
   All Entry objects found at the given x-value with binary search.
   An empty array if no Entry object at that x-value.
 */
-- (NSArray<ChartDataEntry *> * _Nonnull)entriesForXValue:(double)x;
+- (NSArray<ChartDataEntry *> * _Nonnull)entriesForXValue:(double)xValue;
 /**
-  \param x x-value of the entry to search for
+  \param xValue x-value of the entry to search for
 
-  \param rounding x-value of the entry to search for
+  \param closestToY If there are multiple y-values for the specified x-value,
+
+  \param rounding Rounding method if exact value was not found
 
 
   returns:
-  The array-index of the specified entry
+  The array-index of the specified entry.
+  If the no Entry at the specified x-value is found, this method returns the index of the Entry at the closest x-value according to the rounding.
 */
-- (NSInteger)entryIndexWithX:(double)x rounding:(enum ChartDataSetRounding)rounding;
+- (NSInteger)entryIndexWithX:(double)xValue closestToY:(double)yValue rounding:(enum ChartDataSetRounding)rounding;
 /**
   \param e the entry to search for
 
@@ -1469,10 +1494,10 @@ SWIFT_CLASS("_TtC6Charts16ChartBaseDataSet")
 @property (nonatomic, readonly) double xMax;
 @property (nonatomic, readonly) NSInteger entryCount;
 - (ChartDataEntry * _Nullable)entryForIndex:(NSInteger)i;
-- (ChartDataEntry * _Nullable)entryForXValue:(double)x rounding:(enum ChartDataSetRounding)rounding;
-- (ChartDataEntry * _Nullable)entryForXValue:(double)x;
+- (ChartDataEntry * _Nullable)entryForXValue:(double)x closestToY:(double)y rounding:(enum ChartDataSetRounding)rounding;
+- (ChartDataEntry * _Nullable)entryForXValue:(double)x closestToY:(double)y;
 - (NSArray<ChartDataEntry *> * _Nonnull)entriesForXValue:(double)x;
-- (NSInteger)entryIndexWithX:(double)x rounding:(enum ChartDataSetRounding)rounding;
+- (NSInteger)entryIndexWithX:(double)xValue closestToY:(double)y rounding:(enum ChartDataSetRounding)rounding;
 - (NSInteger)entryIndexWithEntry:(ChartDataEntry * _Nonnull)e;
 - (BOOL)addEntry:(ChartDataEntry * _Nonnull)e;
 - (BOOL)addEntryOrdered:(ChartDataEntry * _Nonnull)e;
@@ -1672,6 +1697,7 @@ SWIFT_CLASS("_TtC6Charts12ChartDataSet")
 - (void)calcMinMax;
 - (void)calcMinMaxYFromX:(double)fromX toX:(double)toX;
 - (void)calcMinMaxXWithEntry:(ChartDataEntry * _Nonnull)e;
+- (void)calcMinMaxYWithEntry:(ChartDataEntry * _Nonnull)e;
 /**
 
   returns:
@@ -1715,42 +1741,51 @@ SWIFT_CLASS("_TtC6Charts12ChartDataSet")
 */
 - (ChartDataEntry * _Nullable)entryForIndex:(NSInteger)i;
 /**
-  \param x the x-value
+  \param xValue the x-value
+
+  \param closestToY If there are multiple y-values for the specified x-value,
 
   \param rounding determine whether to round up/down/closest if there is no Entry matching the provided x-value
 
 
   returns:
   The first Entry object found at the given x-value with binary search.
-  If the no Entry at the specifed x-value is found, this method returns the Entry at the closest x-value.
+  If the no Entry at the specified x-value is found, this method returns the Entry at the closest x-value according to the rounding.
   nil if no Entry object at that x-value.
 */
-- (ChartDataEntry * _Nullable)entryForXValue:(double)x rounding:(enum ChartDataSetRounding)rounding;
+- (ChartDataEntry * _Nullable)entryForXValue:(double)xValue closestToY:(double)yValue rounding:(enum ChartDataSetRounding)rounding;
 /**
+  \param xValue the x-value
+
+  \param closestToY If there are multiple y-values for the specified x-value,
+
 
   returns:
   The first Entry object found at the given x-value with binary search.
-  If the no Entry at the specifed x-value is found, this method returns the Entry at the closest x-value.
+  If the no Entry at the specified x-value is found, this method returns the Entry at the closest x-value.
   nil if no Entry object at that x-value.
 */
-- (ChartDataEntry * _Nullable)entryForXValue:(double)x;
+- (ChartDataEntry * _Nullable)entryForXValue:(double)xValue closestToY:(double)yValue;
 /**
 
   returns:
   All Entry objects found at the given xIndex with binary search.
   An empty array if no Entry object at that index.
 */
-- (NSArray<ChartDataEntry *> * _Nonnull)entriesForXValue:(double)x;
+- (NSArray<ChartDataEntry *> * _Nonnull)entriesForXValue:(double)xValue;
 /**
-  \param x x-index of the entry to search for
+  \param xValue x-value of the entry to search for
 
-  \param rounding x-index of the entry to search for
+  \param closestToY If there are multiple y-values for the specified x-value,
+
+  \param rounding Rounding method if exact value was not found
 
 
   returns:
-  The array-index of the specified entry
+  The array-index of the specified entry.
+  If the no Entry at the specified x-value is found, this method returns the index of the Entry at the closest x-value according to the rounding.
 */
-- (NSInteger)entryIndexWithX:(double)xValue rounding:(enum ChartDataSetRounding)rounding;
+- (NSInteger)entryIndexWithX:(double)xValue closestToY:(double)yValue rounding:(enum ChartDataSetRounding)rounding;
 /**
   \param e the entry to search for
 
@@ -2143,30 +2178,70 @@ SWIFT_CLASS("_TtC6Charts13ChartViewBase")
   Highlights the values at the given indices in the given DataSets. Provide
   null or an empty array to undo all highlighting.
   This should be used to programmatically highlight values.
-  This DOES NOT generate a callback to the delegate.
+  This method <em>will not</em> call the delegate.
 */
 - (void)highlightValues:(NSArray<ChartHighlight *> * _Nullable)highs;
 /**
+  Highlights any y-value at the given x-value in the given DataSet.
+  Provide -1 as the dataSetIndex to undo all highlighting.
+  This method will call the delegate.
+  \param x The x-value to highlight
+
+  \param dataSetIndex The dataset index to search in
+
+*/
+- (void)highlightValueWithX:(double)x dataSetIndex:(NSInteger)dataSetIndex;
+/**
+  Highlights the value at the given x-value and y-value in the given DataSet.
+  Provide -1 as the dataSetIndex to undo all highlighting.
+  This method will call the delegate.
+  \param x The x-value to highlight
+
+  \param y The y-value to highlight. Supply \code
+  NaN
+  \endcode for “any”
+
+  \param dataSetIndex The dataset index to search in
+
+*/
+- (void)highlightValueWithX:(double)x y:(double)y dataSetIndex:(NSInteger)dataSetIndex;
+/**
+  Highlights any y-value at the given x-value in the given DataSet.
+  Provide -1 as the dataSetIndex to undo all highlighting.
+  \param x The x-value to highlight
+
+  \param dataSetIndex The dataset index to search in
+
+  \param callDelegate Should the delegate be called for this change
+
+*/
+- (void)highlightValueWithX:(double)x dataSetIndex:(NSInteger)dataSetIndex callDelegate:(BOOL)callDelegate;
+/**
+  Highlights the value at the given x-value and y-value in the given DataSet.
+  Provide -1 as the dataSetIndex to undo all highlighting.
+  \param x The x-value to highlight
+
+  \param y The y-value to highlight. Supply \code
+  NaN
+  \endcode for “any”
+
+  \param dataSetIndex The dataset index to search in
+
+  \param callDelegate Should the delegate be called for this change
+
+*/
+- (void)highlightValueWithX:(double)x y:(double)y dataSetIndex:(NSInteger)dataSetIndex callDelegate:(BOOL)callDelegate;
+/**
   Highlights the values represented by the provided Highlight object
-  This DOES NOT generate a callback to the delegate.
+  This method <em>will not</em> call the delegate.
   \param highlight contains information about which entry should be highlighted
 
 */
 - (void)highlightValue:(ChartHighlight * _Nullable)highlight;
 /**
-  Highlights the value at the given x-value in the given DataSet.
-  Provide -1 as the dataSetIndex to undo all highlighting.
-*/
-- (void)highlightValueWithX:(double)x dataSetIndex:(NSInteger)dataSetIndex;
-/**
-  Highlights the value at the given x-value in the given DataSet.
-  Provide -1 as the dataSetIndex to undo all highlighting.
-*/
-- (void)highlightValueWithX:(double)x dataSetIndex:(NSInteger)dataSetIndex callDelegate:(BOOL)callDelegate;
-/**
   Highlights the value selected by touch gesture.
 */
-- (void)highlightValueWithHighlight:(ChartHighlight * _Nullable)highlight callDelegate:(BOOL)callDelegate;
+- (void)highlightValue:(ChartHighlight * _Nullable)highlight callDelegate:(BOOL)callDelegate;
 /**
 
   returns:
@@ -2393,10 +2468,6 @@ SWIFT_CLASS("_TtC6Charts13ChartViewBase")
   The rectangle that defines the borders of the chart-value surface (into which the actual values are drawn).
 */
 @property (nonatomic, readonly) CGRect contentRect;
-/**
-  Get all Entry objects at the given index across all DataSets.
-*/
-- (NSArray<ChartDataEntry *> * _Nonnull)getEntriesAtIndex:(double)xValue;
 /**
 
   returns:
@@ -3567,6 +3638,7 @@ SWIFT_CLASS("_TtC6Charts18CandleChartDataSet")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithValues:(NSArray<ChartDataEntry *> * _Nullable)values label:(NSString * _Nullable)label OBJC_DESIGNATED_INITIALIZER;
 - (void)calcMinMaxWithEntry:(ChartDataEntry * _Nonnull)e;
+- (void)calcMinMaxYWithEntry:(ChartDataEntry * _Nonnull)e;
 /**
   the space that is left out on the left and right side of each candle,
   <em>default</em>: 0.1 (10%), max 0.45, min 0.0
@@ -4285,10 +4357,12 @@ SWIFT_CLASS_NAMED("Highlight")
 /**
   \param x the x-value of the highlighted value
 
+  \param y the y-value of the highlighted value
+
   \param dataSetIndex the index of the DataSet the highlighted value belongs to
 
 */
-- (nonnull instancetype)initWithX:(double)x dataSetIndex:(NSInteger)dataSetIndex OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithX:(double)x y:(double)y dataSetIndex:(NSInteger)dataSetIndex OBJC_DESIGNATED_INITIALIZER;
 /**
   \param x the x-value of the highlighted value
 
