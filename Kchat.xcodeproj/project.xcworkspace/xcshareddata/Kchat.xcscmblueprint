@@ -9,7 +9,7 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B4F7FD52-523C-4615-A62B-F069185C752C",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "9025163822AAEA7A2D8AC9210D0874A56F62B462" : "..\/Charts",
+    "9025163822AAEA7A2D8AC9210D0874A56F62B462" : "..\/..\/Charts",
     "252A635C30062A1842C4F9A2640A35B0F119F96A" : "Kchat\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Kchat",

@@ -12,7 +12,6 @@
 		48943BE61DAD104800C895A5 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48943BE41DAD104800C895A5 /* TestViewController.xib */; };
 		48DA33A51DA55CDD0022C19E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DA33A41DA55CDD0022C19E /* Charts.framework */; };
 		48DA33A61DA55CDD0022C19E /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48DA33A41DA55CDD0022C19E /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		48DA33B11DA61D4D0022C19E /* DemoBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48DA33B01DA61D4D0022C19E /* DemoBaseViewController.m */; };
 		48DA33D21DA62CBA0022C19E /* Kchat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA33D11DA62CBA0022C19E /* Kchat.swift */; };
 		48E0A60D1D97D40D00B1CC94 /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48E0A60B1D97D40D00B1CC94 /* ChartViewController.m */; };
 		48E0A60E1D97D40D00B1CC94 /* ChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48E0A60C1D97D40D00B1CC94 /* ChartViewController.xib */; };
@@ -38,29 +37,37 @@
 		48F636151D94158200721C36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F636141D94158200721C36 /* Assets.xcassets */; };
 		48F636181D94158200721C36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F636161D94158200721C36 /* LaunchScreen.storyboard */; };
 		48F636201D941BF700721C36 /* KchatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F6361F1D941BF700721C36 /* KchatViewController.xib */; };
+		8783B83B1DB47DF600141C07 /* DemoBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8783B83A1DB47DF600141C07 /* DemoBaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		48DA339E1DA55C390022C19E /* PBXContainerItemProxy */ = {
+		8783B8451DB49BF000141C07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 48DA33981DA55C390022C19E /* Charts.xcodeproj */;
+			containerPortal = 8783B83E1DB49BF000141C07 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06165F241D8110E600722320;
 			remoteInfo = Charts;
 		};
-		48DA33A01DA55C390022C19E /* PBXContainerItemProxy */ = {
+		8783B8471DB49BF000141C07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 48DA33981DA55C390022C19E /* Charts.xcodeproj */;
+			containerPortal = 8783B83E1DB49BF000141C07 /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06165F2E1D8110E600722320;
+			remoteInfo = ChartsTests;
+		};
+		8783B8491DB49BF000141C07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8783B83E1DB49BF000141C07 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06B120D51D811E6200D14B02;
 			remoteInfo = ChartsRealm;
 		};
-		48DA33A21DA55C390022C19E /* PBXContainerItemProxy */ = {
+		8783B84B1DB49BF000141C07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 48DA33981DA55C390022C19E /* Charts.xcodeproj */;
+			containerPortal = 8783B83E1DB49BF000141C07 /* Charts.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 06165F2E1D8110E600722320;
-			remoteInfo = ChartsTests;
+			remoteGlobalIDString = 06B120FF1D811F1600D14B02;
+			remoteInfo = ChartsRealmTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -84,10 +91,7 @@
 		48943BE21DAD104800C895A5 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		48943BE31DAD104800C895A5 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		48943BE41DAD104800C895A5 /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
-		48DA33981DA55C390022C19E /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 		48DA33A41DA55CDD0022C19E /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
-		48DA33AF1DA61D4D0022C19E /* DemoBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoBaseViewController.h; sourceTree = "<group>"; };
-		48DA33B01DA61D4D0022C19E /* DemoBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoBaseViewController.m; sourceTree = "<group>"; };
 		48DA33D11DA62CBA0022C19E /* Kchat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kchat.swift; sourceTree = "<group>"; };
 		48DA33D31DA62CE80022C19E /* Kchat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kchat-Bridging-Header.h"; sourceTree = "<group>"; };
 		48E0A60A1D97D40D00B1CC94 /* ChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartViewController.h; sourceTree = "<group>"; };
@@ -127,6 +131,9 @@
 		48F636171D94158200721C36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48F636191D94158200721C36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F6361F1D941BF700721C36 /* KchatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KchatViewController.xib; sourceTree = "<group>"; };
+		8783B8391DB47DF600141C07 /* DemoBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoBaseViewController.h; sourceTree = "<group>"; };
+		8783B83A1DB47DF600141C07 /* DemoBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoBaseViewController.m; sourceTree = "<group>"; };
+		8783B83E1DB49BF000141C07 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,16 +156,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		48DA33991DA55C390022C19E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				48DA339F1DA55C390022C19E /* Charts.framework */,
-				48DA33A11DA55C390022C19E /* ChartsRealm.framework */,
-				48DA33A31DA55C390022C19E /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		48E0A60F1D97D52D00B1CC94 /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,10 +206,10 @@
 		48F635FC1D94158200721C36 = {
 			isa = PBXGroup;
 			children = (
+				8783B83E1DB49BF000141C07 /* Charts.xcodeproj */,
 				48DA33D31DA62CE80022C19E /* Kchat-Bridging-Header.h */,
 				48DA33D11DA62CBA0022C19E /* Kchat.swift */,
 				48DA33A41DA55CDD0022C19E /* Charts.framework */,
-				48DA33981DA55C390022C19E /* Charts.xcodeproj */,
 				48E0A65F1D9834E700B1CC94 /* Frameworks */,
 				48F636071D94158200721C36 /* Kchat */,
 				48F636061D94158200721C36 /* Products */,
@@ -230,14 +227,14 @@
 		48F636071D94158200721C36 /* Kchat */ = {
 			isa = PBXGroup;
 			children = (
+				8783B8391DB47DF600141C07 /* DemoBaseViewController.h */,
+				8783B83A1DB47DF600141C07 /* DemoBaseViewController.m */,
 				48F6360B1D94158200721C36 /* AppDelegate.h */,
 				48F6360C1D94158200721C36 /* AppDelegate.m */,
 				48F636141D94158200721C36 /* Assets.xcassets */,
 				48E0A60A1D97D40D00B1CC94 /* ChartViewController.h */,
 				48E0A60B1D97D40D00B1CC94 /* ChartViewController.m */,
 				48E0A60C1D97D40D00B1CC94 /* ChartViewController.xib */,
-				48DA33AF1DA61D4D0022C19E /* DemoBaseViewController.h */,
-				48DA33B01DA61D4D0022C19E /* DemoBaseViewController.m */,
 				48F636191D94158200721C36 /* Info.plist */,
 				48F6361F1D941BF700721C36 /* KchatViewController.xib */,
 				48F636161D94158200721C36 /* LaunchScreen.storyboard */,
@@ -259,6 +256,17 @@
 				48F636091D94158200721C36 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8783B83F1DB49BF000141C07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8783B8461DB49BF000141C07 /* Charts.framework */,
+				8783B8481DB49BF000141C07 /* ChartsTests.xctest */,
+				8783B84A1DB49BF000141C07 /* ChartsRealm.framework */,
+				8783B84C1DB49BF000141C07 /* ChartsRealmTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,7 +301,7 @@
 				TargetAttributes = {
 					48F636041D94158200721C36 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = K6XTADFMU8;
+						DevelopmentTeam = TAZ3VH87E4;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -312,8 +320,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 48DA33991DA55C390022C19E /* Products */;
-					ProjectRef = 48DA33981DA55C390022C19E /* Charts.xcodeproj */;
+					ProductGroup = 8783B83F1DB49BF000141C07 /* Products */;
+					ProjectRef = 8783B83E1DB49BF000141C07 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -324,25 +332,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		48DA339F1DA55C390022C19E /* Charts.framework */ = {
+		8783B8461DB49BF000141C07 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = 48DA339E1DA55C390022C19E /* PBXContainerItemProxy */;
+			remoteRef = 8783B8451DB49BF000141C07 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		48DA33A11DA55C390022C19E /* ChartsRealm.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ChartsRealm.framework;
-			remoteRef = 48DA33A01DA55C390022C19E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		48DA33A31DA55C390022C19E /* ChartsTests.xctest */ = {
+		8783B8481DB49BF000141C07 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = 48DA33A21DA55C390022C19E /* PBXContainerItemProxy */;
+			remoteRef = 8783B8471DB49BF000141C07 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8783B84A1DB49BF000141C07 /* ChartsRealm.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChartsRealm.framework;
+			remoteRef = 8783B8491DB49BF000141C07 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8783B84C1DB49BF000141C07 /* ChartsRealmTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsRealmTests.xctest;
+			remoteRef = 8783B84B1DB49BF000141C07 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -371,6 +386,7 @@
 				48DA33D21DA62CBA0022C19E /* Kchat.swift in Sources */,
 				48F636101D94158200721C36 /* ViewController.m in Sources */,
 				48E0A6861D99723000B1CC94 /* AFURLSessionManager.m in Sources */,
+				8783B83B1DB47DF600141C07 /* DemoBaseViewController.m in Sources */,
 				48E0A60D1D97D40D00B1CC94 /* ChartViewController.m in Sources */,
 				48E0A6821D99723000B1CC94 /* AFNetworkReachabilityManager.m in Sources */,
 				48E0A6851D99723000B1CC94 /* AFURLResponseSerialization.m in Sources */,
@@ -381,7 +397,6 @@
 				48E0A6811D99723000B1CC94 /* AFHTTPSessionManager.m in Sources */,
 				48943BE51DAD104800C895A5 /* TestViewController.m in Sources */,
 				48E0A6841D99723000B1CC94 /* AFURLRequestSerialization.m in Sources */,
-				48DA33B11DA61D4D0022C19E /* DemoBaseViewController.m in Sources */,
 				48F6360A1D94158200721C36 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,6 +445,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DDD = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -451,6 +467,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -475,6 +492,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DDD = "";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -489,6 +507,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -501,7 +520,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = K6XTADFMU8;
+				DEVELOPMENT_TEAM = TAZ3VH87E4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -512,7 +531,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kchat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -523,7 +542,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = K6XTADFMU8;
+				DEVELOPMENT_TEAM = TAZ3VH87E4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -533,7 +552,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cc.Kchat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Kchat-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
