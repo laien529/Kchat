@@ -219,7 +219,7 @@
     [self setBarDataCount:dataArray.count range:dataArray.count];
 
     [_barChartView setAutoScaleMinMaxEnabled:YES];
-    [_barChartView setVisibleXRangeMaximum:60];
+//    [_barChartView setVisibleXRangeMaximum:60];
     
 
     [_barChartView moveViewToX:dataArray.count - 1];
