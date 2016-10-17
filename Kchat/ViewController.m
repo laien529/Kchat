@@ -9,8 +9,9 @@
 #import "ViewController.h"
 #import "ChartViewController.h"
 
-@interface ViewController ()<KchartViewDelegate>
-
+@interface ViewController ()<KchartViewDelegate>{
+    ChartViewController *_indexViewController;
+}
 @end
 
 @implementation ViewController
@@ -20,11 +21,11 @@
     // Do any additional setup after loading the view, typically from a nib.
     _chartView.backgroundColor = [UIColor yellowColor];
     
-    ChartViewController *indexViewController = [[ChartViewController alloc] initWithProductId:_productId dataRange:_dataRange];
-    indexViewController.kChartViewDelegate = self;
-    indexViewController.view.frame = CGRectMake(0, 0, CGRectGetWidth(_chartView.frame), CGRectGetHeight(_chartView.frame));
-    indexViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [_chartView addSubview:indexViewController.view];
+    _indexViewController = [[ChartViewController alloc] initWithProductId:_productId dataRange:_dataRange];
+    _indexViewController.kChartViewDelegate = self;
+    _indexViewController.view.frame = CGRectMake(0, 0, CGRectGetWidth(_chartView.frame), CGRectGetHeight(_chartView.frame));
+    _indexViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [_chartView addSubview:_indexViewController.view];
 }
 
 - (void)didSelectChart:(NSDictionary *)selectedDicData {

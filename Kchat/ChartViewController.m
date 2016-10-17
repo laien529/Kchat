@@ -19,8 +19,8 @@
     NSString *_productId;
     NSString *_pageNo;
 }
-@property (nonatomic, strong) IBOutlet BarChartView *barChartView;
-@property (nonatomic, strong) IBOutlet CandleStickChartView *stickChartView;
+@property (nonatomic, weak) IBOutlet BarChartView *barChartView;
+@property (nonatomic, weak) IBOutlet CandleStickChartView *stickChartView;
 
 @end
 
@@ -38,7 +38,8 @@
     [super viewDidLoad];
 
     self.req_url = [NSString stringWithFormat:@"http://jwuat.hngangxin.com/api/1/data/getKChartResource.json?dataProductId=%@&pageNo=%@", _productId ? _productId : @"", _pageNo ? _pageNo : @"1"] ;
-    
+    [self initChartView];
+
     [self getData];
 }
 
@@ -47,7 +48,7 @@
 - (void)viewWillAppear:(BOOL)animated{
 }
 
--(void)getData{
+- (void)getData{
     
     NSLog(@"url:%@",self.req_url);
     
@@ -84,6 +85,8 @@
        
         dataArray = [NSArray arrayWithArray:dict[@"resultEntity"][@"kChartResource"]];
         if (dataArray.count > 0) {
+            [self setData];
+
             
             if ([dataArray.lastObject isKindOfClass:[NSDictionary class]]) {
                 if (_kChartViewDelegate && [_kChartViewDelegate respondsToSelector:@selector(didSelectChart:)]) {
@@ -91,10 +94,6 @@
 
                 }
             }
-            [self initStickChartView];
-            [self initBarChartView];
-            [self setOffSet];;
-
         }
         
     } else {
@@ -102,37 +101,39 @@
     }
 }
 
+- (void)initChartView{
+    [self initStickChartView];
+    [self initBarChartView];
+}
+
+- (void)setData{
+    [self setStickDataCount];
+    [self setBarDataCount];
+    [self setOffSet];
+}
+
 - (void)initStickChartView{
     
-    [self setStickDataCount:dataArray.count range:dataArray.count];
-
     _stickChartView.delegate = self;
-    _stickChartView.scaleYEnabled = NO;
     _stickChartView.borderLineWidth = 0.5;
     _stickChartView.drawBordersEnabled = YES;
+    _stickChartView.descriptionText = @"";
+    _stickChartView.scaleYEnabled = NO;
+    _stickChartView.dragEnabled = YES;
     _stickChartView.doubleTapToZoomEnabled = NO;
-    [_stickChartView setDrawMarkers:NO];
-    [_stickChartView setNoDataText:@""];
     [_stickChartView setClipsToBounds:YES];
-    _stickChartView.drawGridBackgroundEnabled = NO;
-    [_stickChartView setAutoScaleMinMaxEnabled:YES];
-    [_stickChartView setVisibleXRangeMaximum:60];
-    [_stickChartView setDescriptionText:@""];
+    
     _stickChartView.legend.enabled = NO;
-    [_stickChartView setDragDecelerationEnabled:YES];
-    [_stickChartView moveViewToX:dataArray.count - 1];
+    _stickChartView.dragDecelerationEnabled = YES;
+    
     //x轴
     ChartXAxis *xAxis = _stickChartView.xAxis;
-    _stickChartView.clipsToBounds = YES;
     xAxis.drawGridLinesEnabled = NO;
-    [xAxis setGridLineDashLengths:@[@(3), @(2), @(0)]];
     xAxis.drawAxisLineEnabled = NO;
+    [xAxis setGridLineDashLengths:@[@(3), @(2), @(0)]];
     [xAxis setLabelTextColor:[UIColor colorWithRed:45/255. green:57/255. blue:69/255. alpha:1]];
     [xAxis setGridColor:[UIColor colorWithRed:151/255. green:133/255. blue:147/255. alpha:1]];
-//    xAxis.valueFormatter = self;
     xAxis.labelPosition = XAxisLabelPositionBottom;
-    xAxis.avoidFirstLastClippingEnabled = YES;
-//    xAxis.drawLimitLinesBehindDataEnabled = YES;
     //左Y轴
     ChartYAxis *leftAxis = _stickChartView.leftAxis;
     leftAxis.labelCount = 4;
@@ -143,7 +144,7 @@
     leftAxis.drawLabelsEnabled = YES;
     [leftAxis setLabelTextColor:[UIColor colorWithRed:45/255. green:57/255. blue:69/255. alpha:1]];
     [leftAxis setGridColor:[UIColor colorWithRed:151/255. green:133/255. blue:147/255. alpha:1]];
-    
+    leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
     NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
     leftAxisFormatter.minimumFractionDigits = 0;
     leftAxisFormatter.maximumFractionDigits = 1;
@@ -162,12 +163,64 @@
     
 }
 
-- (void)setStickDataCount:(NSInteger)count range:(double)range {
+- (void)initBarChartView {
+    
+    _barChartView.delegate = self;
+    _barChartView.drawBordersEnabled = YES;
+    _barChartView.borderLineWidth = 0.5;
+    _barChartView.borderColor = [UIColor darkGrayColor];
+    _barChartView.descriptionText = @"";
+    _barChartView.dragEnabled = YES;
+    _barChartView.scaleYEnabled = NO;
+    _barChartView.doubleTapToZoomEnabled = NO;
+    _barChartView.legend.enabled = NO;
+    _barChartView.autoScaleMinMaxEnabled = YES;
+    
+    
+    //    [_barChartView setVisibleXRangeMaximum:60];
+    
+    
+    
+    //X轴
+    ChartXAxis *xAxis = _barChartView.xAxis;
+    xAxis.drawLabelsEnabled = NO;
+    xAxis.drawGridLinesEnabled = NO;
+    xAxis.labelPosition = XAxisLabelPositionBottom;
+    xAxis.labelTextColor = [UIColor grayColor];
+    xAxis.gridColor = [UIColor grayColor];
+    
+    
+    NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
+    leftAxisFormatter.minimumFractionDigits = 0;
+    leftAxisFormatter.maximumFractionDigits = 1;
+    
+    //Y轴 左
+    ChartYAxis *leftAxis = _barChartView.leftAxis;
+    leftAxis.axisMinValue = 0;
+    leftAxis.drawGridLinesEnabled = YES;
+    leftAxis.drawAxisLineEnabled = NO;
+    leftAxis.labelTextColor = [UIColor grayColor];
+    leftAxis.drawLabelsEnabled = YES;
+    [leftAxis setGridLineDashLengths:@[@(9), @(3), @(0)]];
+    leftAxis.labelCount = 3;
+    leftAxis.axisMinValue = 0;
+    leftAxis.showOnlyMinMaxEnabled = NO;
+    leftAxis.valueFormatter = leftAxisFormatter;
+    leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
+    leftAxis.spaceTop = 5;
+    
+    //    _barChartView.rightAxis.enabled = NO;
+    _barChartView.rightAxis.drawAxisLineEnabled = NO;
+    _barChartView.rightAxis.drawLabelsEnabled = NO;
+    _barChartView.rightAxis.drawGridLinesEnabled = NO;
+}
+
+- (void)setStickDataCount {
     
     NSMutableArray *yVals1 = [[NSMutableArray alloc] init];
     NSMutableArray *xVals1 = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < dataArray.count; i++) {
         NSDictionary *dataDic = [dataArray objectAtIndex:i];
         
         double high = ((NSNumber*)dataDic[@"high"]).doubleValue;
@@ -201,122 +254,75 @@
     
     CandleChartData *data = [[CandleChartData alloc] initWithXVals:xVals1 dataSet:set1];
     _stickChartView.data = data;
+    
+    [_stickChartView moveViewToX:dataArray.count - 1];
+
 }
 
-- (void)initBarChartView {
-    
-    _barChartView.delegate = self;
-    _barChartView.drawBordersEnabled = YES;
-    _barChartView.borderLineWidth = 0.5;
-    _barChartView.borderColor = [UIColor darkGrayColor];
-    [_barChartView setDescriptionText:@""];
-    _barChartView.dragEnabled = YES;
-    [_barChartView setDragDecelerationEnabled:YES];
-    [_barChartView setScaleYEnabled:NO];
-    _barChartView.doubleTapToZoomEnabled = NO;
-    _barChartView.legend.enabled = NO;
-    
-    [self setBarDataCount:dataArray.count range:dataArray.count];
 
-    [_barChartView setAutoScaleMinMaxEnabled:YES];
-//    [_barChartView setVisibleXRangeMaximum:60];
-    
 
-    [_barChartView moveViewToX:dataArray.count - 1];
-
+- (void)setBarDataCount{
     
-    ChartXAxis *xAxis = _barChartView.xAxis;
-    xAxis.drawLabelsEnabled = NO;
-    xAxis.drawGridLinesEnabled = NO;
-    xAxis.labelPosition = XAxisLabelPositionBottom;
-//    xAxis.labelFont = [UIFont systemFontOfSize:10.f];
-//    xAxis.avoidFirstLastClippingEnabled = YES;
-//    xAxis.valueFormatter = self;
-
-    //    xAxis.axisMaximum = 180;
-    //    xAxis.spaceMax = 0.2;
-    //    xAxis.axisLineWidth = _stickChartView.xAxis.axisLineWidth;
-    NSNumberFormatter *leftAxisFormatter = [[NSNumberFormatter alloc] init];
-    leftAxisFormatter.minimumFractionDigits = 0;
-    leftAxisFormatter.maximumFractionDigits = 1;
-//    leftAxisFormatter.positiveSuffix = @" t";
-    
-    ChartYAxis *leftAxis = _barChartView.leftAxis;
-    leftAxis.labelFont = [UIFont systemFontOfSize:10.f];
-//    leftAxis.axisMinValue = 0;
-    leftAxis.drawGridLinesEnabled = YES;
-    leftAxis.drawAxisLineEnabled = NO;
-    leftAxis.drawLabelsEnabled = YES;
-    [leftAxis setGridLineDashLengths:@[@(3), @(2), @(0)]];
-    leftAxis.labelCount = 3;
-    leftAxis.axisMinValue = 0;
-//    leftAxis setsh
-//    leftAxis.axisRange = 3;
-    leftAxis.valueFormatter = leftAxisFormatter;
-    leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
-//    leftAxis.space = 5;
-    
-//    _barChartView.rightAxis.enabled = NO;
-    _barChartView.rightAxis.drawAxisLineEnabled = NO;
-    _barChartView.rightAxis.drawLabelsEnabled = NO;
-    _barChartView.rightAxis.drawGridLinesEnabled = NO;
-}
-
-- (void)setBarDataCount:(NSInteger)count range:(double)range {
-    double start = 0;
     NSMutableArray *xVals = [[NSMutableArray alloc] init];
-
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
-    for (int i = start; i < count; i++) {
-        NSDictionary *dataDic = [dataArray objectAtIndex:i];
+    for (int i = 0; i < dataArray.count; i++) {
         
-        NSString *dateString = dataDic[@"date"];
-        [xVals addObject:dateString];
+        NSDictionary *dataDic = [dataArray objectAtIndex:i];
+        [xVals addObject:dataDic[@"date"]];
         
         double val = ((NSNumber*)dataDic[@"volume"]).doubleValue;
         
         [yVals addObject:[[BarChartDataEntry alloc] initWithValue:val xIndex:i]];
     }
     
-        BarChartDataSet *set1 = nil;
-
-        set1 = [[BarChartDataSet alloc] initWithYVals:yVals label:@""];
-        [set1 setColor:[UIColor colorWithRed:145/255. green:199/255. blue:147/255. alpha:1]];
-        [set1 setHighlightEnabled:YES];
-        set1.highlightColor = [UIColor darkGrayColor];
-        set1.highlightLineWidth = 0.3;
-        [set1 setDrawValuesEnabled:NO];
-        NSMutableArray *dataSets = [[NSMutableArray alloc] init];
-        [dataSets addObject:set1];
-        BarChartData *data = [[BarChartData alloc] initWithXVals:xVals dataSets:dataSets];
-        _barChartView.data = data;
-//        data.barWidth = 1.0f;
-//        [_barChartView.data notifyDataChanged];
-//        [_barChartView notifyDataSetChanged];
-       
-
+    BarChartDataSet *set1 = [[BarChartDataSet alloc] initWithYVals:yVals label:@""];
+    set1.barSpace = 0.5f;
+    set1.highlightEnabled = YES;
+    set1.highlightAlpha = 1;
+    set1.highlightColor = [UIColor darkGrayColor];
+    set1.drawValuesEnabled = NO;
+    [set1 setColor:[UIColor colorWithRed:145/255. green:199/255. blue:147/255. alpha:1]];
+    
+    NSMutableArray *dataSets = [[NSMutableArray alloc] init];
+    [dataSets addObject:set1];
+    BarChartData *data = [[BarChartData alloc] initWithXVals:xVals dataSets:dataSets];
+    _barChartView.data = data;
+    
+    ChartViewPortHandler *viewPortHandlerBar = _barChartView.viewPortHandler;
+    [viewPortHandlerBar setMaximumScaleX:3];
+    [viewPortHandlerBar setMinimumScaleX:1];
+    [_barChartView setVisibleXRangeMinimum:60];
+    [_barChartView setVisibleXRangeMaximum:180];
+    
+    [_barChartView moveViewToX:dataArray.count - 1];
+    [_barChartView notifyDataSetChanged];
+    [_barChartView invalidateIntrinsicContentSize];
 
 }
 
 #pragma mark - ChartViewDelegate
 
 //选中
-- (void)chartValueSelected:(ChartViewBase *)chartView entry:(ChartDataEntry *)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight *)highlight {
-    
+
+- (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight {
+    NSLog(@"chartValueSelected");
+
 //    if (chartView == _barChartView) {
 //        return;
 //    }
-//    NSInteger clickIndex = entry.x;
+    NSInteger clickIndex = entry.xIndex;
 //    [_barChartView. objectAtIndex:clickIndex];
 //    [_barChartView highlightValueWithX:6 dataSetIndex:clickIndex callDelegate:NO];
 //    _stickChartView.dragEnabled = NO;
-    if (dataSetIndex < dataArray.count) {
-        if (_kChartViewDelegate && [_kChartViewDelegate respondsToSelector:@selector(didSelectChart:)]) {
-            NSDictionary *dict = [dataArray objectAtIndex:dataSetIndex];
-            [_kChartViewDelegate didSelectChart:dict];
+    dispatch_main_sync_safe(^(){
+        if (clickIndex < dataArray.count) {
+            if (_kChartViewDelegate && [_kChartViewDelegate respondsToSelector:@selector(didSelectChart:)]) {
+                NSDictionary *dict = [dataArray objectAtIndex:clickIndex];
+                [_kChartViewDelegate didSelectChart:dict];
+            }
         }
-    }
+    });
 }
 
 //取消选中

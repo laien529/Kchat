@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "DemoBaseViewController.h"
+//主线程调用
+#define dispatch_main_sync_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+}\
+else {\
+dispatch_sync(dispatch_get_main_queue(), block);\
+}
 
 @protocol KchartViewDelegate <NSObject>
 
