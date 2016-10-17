@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		QynxMG5kiSuOeYVg8Dwxb73rWz0=
+		rzPjGW7kdfJjbRPdXddbD71Tn9A=
 		</data>
 		<key>Modules/Charts.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/Charts.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		gF8uy5PXL71S+M/fYDmns8dycxY=
+		dNf4Ovoa/wpiSnyBvqaKphcXS2Q=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -68,11 +68,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gF8uy5PXL71S+M/fYDmns8dycxY=
+			dNf4Ovoa/wpiSnyBvqaKphcXS2Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			PuRQ6NoAIlZFnAM5WunR870MHCAyTnF0R44QjvCYKkY=
+			YMLbNw4HLZ6RCiKVHPoiR3h1iNvvhN5MYjGjmFC8ybQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
