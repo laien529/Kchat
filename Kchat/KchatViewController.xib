@@ -27,8 +27,8 @@
             <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.64999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frq-43-mh9">
-                    <color key="backgroundColor" red="0.1174025229" green="0.63265720569999995" blue="0.97075688069999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frq-43-mh9">
+                    <color key="backgroundColor" red="0.1174025229" green="0.63265720569999995" blue="0.97075688069999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="Niv-CZ-3Lg"/>
                     </constraints>
@@ -182,7 +182,7 @@
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FmU-wg-beg">
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="1" id="xc6-qv-JKw"/>
+                        <constraint firstAttribute="height" id="xc6-qv-JKw"/>
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNk-MH-eGa">
@@ -223,9 +223,9 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="WFI-3U-NvJ" firstAttribute="height" secondItem="x30-pT-cYb" secondAttribute="height" constant="-96" id="1cI-ZZ-cmr"/>
+                <constraint firstItem="WFI-3U-NvJ" firstAttribute="height" secondItem="x30-pT-cYb" secondAttribute="height" constant="-80" id="1cI-ZZ-cmr"/>
                 <constraint firstItem="VqR-ql-jDq" firstAttribute="width" secondItem="x30-pT-cYb" secondAttribute="width" id="DMI-Hy-6cA"/>
                 <constraint firstItem="frq-43-mh9" firstAttribute="top" secondItem="x30-pT-cYb" secondAttribute="top" id="DPm-bK-veP"/>
                 <constraint firstItem="FmU-wg-beg" firstAttribute="top" secondItem="0Fb-Vz-uMM" secondAttribute="bottom" id="IAi-7k-odR"/>
@@ -236,7 +236,7 @@
                 <constraint firstItem="FmU-wg-beg" firstAttribute="leading" secondItem="0Fb-Vz-uMM" secondAttribute="leading" id="PoA-z3-gKA"/>
                 <constraint firstItem="aNk-MH-eGa" firstAttribute="leading" secondItem="x30-pT-cYb" secondAttribute="leading" id="Zed-Zy-RRU"/>
                 <constraint firstItem="0Fb-Vz-uMM" firstAttribute="leading" secondItem="frq-43-mh9" secondAttribute="leading" id="bEX-Va-jfO"/>
-                <constraint firstItem="aNk-MH-eGa" firstAttribute="top" secondItem="FmU-wg-beg" secondAttribute="bottom" id="bEu-c1-9uN"/>
+                <constraint firstItem="aNk-MH-eGa" firstAttribute="top" secondItem="FmU-wg-beg" secondAttribute="bottom" constant="-1" id="bEu-c1-9uN"/>
                 <constraint firstItem="FmU-wg-beg" firstAttribute="width" secondItem="x30-pT-cYb" secondAttribute="width" id="bv2-HS-Wbp"/>
                 <constraint firstItem="UFf-dT-gXc" firstAttribute="leading" secondItem="aNk-MH-eGa" secondAttribute="leading" id="cU8-qp-Zid"/>
                 <constraint firstItem="svN-VQ-Jgg" firstAttribute="width" secondItem="x30-pT-cYb" secondAttribute="width" id="dbB-kO-2Ud"/>
@@ -253,6 +253,9 @@
                 <constraint firstItem="WFI-3U-NvJ" firstAttribute="width" secondItem="x30-pT-cYb" secondAttribute="width" id="wt9-H8-t0A"/>
                 <constraint firstItem="frq-43-mh9" firstAttribute="leading" secondItem="x30-pT-cYb" secondAttribute="leadingMargin" id="yeh-xq-lbA"/>
             </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">

@@ -19,15 +19,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _chartView.backgroundColor = [UIColor yellowColor];
     
+    _chartView.backgroundColor = [UIColor clearColor];
+//    self.extendedLayoutIncludesOpaqueBars = YES;
     _indexViewController = [[ChartViewController alloc] initWithProductId:_productId dataRange:_dataRange];
     _indexViewController.kChartViewDelegate = self;
     _indexViewController.view.frame = CGRectMake(0, 0, CGRectGetWidth(_chartView.frame), CGRectGetHeight(_chartView.frame));
     _indexViewController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [_chartView addSubview:_indexViewController.view];
 }
+//设置样式
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
+}
 
+//设置是否隐藏
+- (BOOL)prefersStatusBarHidden {
+    //    [super prefersStatusBarHidden];
+    return NO;
+}
+
+//设置隐藏动画
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+    return UIStatusBarAnimationNone;
+}
 - (void)didSelectChart:(NSDictionary *)selectedDicData {
     _productNameLabel.text = selectedDicData[@"productName"];
     

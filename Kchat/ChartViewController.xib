@@ -37,6 +37,7 @@
                 <constraint firstItem="fvV-Lv-idy" firstAttribute="top" secondItem="8Ca-aF-qsd" secondAttribute="bottom" id="n3B-m9-6vU"/>
                 <constraint firstItem="8Ca-aF-qsd" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="3/4" id="spE-Kr-nc8"/>
             </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>

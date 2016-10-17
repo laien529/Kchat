@@ -24,7 +24,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 @end
 
 @interface ChartViewController : UIViewController {
-    NSArray<NSString *> *months;
+//    NSArray<NSString *> *months;
 }
 
 @property (nonatomic,strong) NSString *lastTime;
