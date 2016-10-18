@@ -131,7 +131,9 @@
     _stickChartView.highlightPerTapEnabled = NO;
 //    _stickChartView.highlightFullBarEnabled = YES;
 //    _stickChartView.highlightPerDragEnabled = NO;
-
+    UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [longGesture setDelaysTouchesBegan:NO];
+    [_stickChartView addGestureRecognizer:longGesture];
     //x轴
     ChartXAxis *xAxis = _stickChartView.xAxis;
     xAxis.drawLabelsEnabled = YES;
@@ -166,7 +168,6 @@
     [rightAxis setGridColor:[UIColor colorWithRed:151/255. green:133/255. blue:147/255. alpha:1]];
     //不显示标题
     _stickChartView.legend.enabled = NO;
-//    _stickChartView.dragDecelerationFrictionCoef = 0.2f;
     _stickChartView.dragDecelerationEnabled = YES;
 
 }
@@ -183,10 +184,10 @@
     _barChartView.doubleTapToZoomEnabled = NO;
     _barChartView.legend.enabled = NO;
     _barChartView.scaleXEnabled = YES;
-    //    [_barChartView setVisibleXRangeMaximum:60];
-    
-    
-    
+    _barChartView.highlightPerTapEnabled = NO;
+    UILongPressGestureRecognizer *longGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [longGesture setDelaysTouchesBegan:NO];
+    [_barChartView addGestureRecognizer:longGesture];
     //X轴
     ChartXAxis *xAxis = _barChartView.xAxis;
     xAxis.drawLabelsEnabled = NO;
@@ -322,8 +323,6 @@
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight {
 
-
-
     if (chartView == _stickChartView) {
         [_barChartView highlightValueWithXIndex:entry.xIndex dataSetIndex:dataSetIndex callDelegate:NO];
 
@@ -439,24 +438,56 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    UITouch *touch = [touches anyObject];
-
-    clickTime = touch.timestamp;
+//    UITouch *touch = [touches anyObject];
+//
+//    clickTime = touch.timestamp;
     
-    [self performSelector:@selector(longPress) withObject:nil afterDelay:1];
-
 }
 
-- (void)longPress {
-    NSLog(@"longPress%@",@"");
+- (void)longPress:(UIGestureRecognizer*)gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"longPress==%@",@"begin");
+        _stickChartView.dragEnabled = NO;
+        _barChartView.dragEnabled = NO;
+    }
+    if (gesture.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"longPress==%@",@"change");
+        UIView *view = gesture.view;
+        ChartDataEntry *entry;
+
+        if (view == _stickChartView) {
+            entry = [_stickChartView getEntryByTouchPoint:[gesture locationInView:_stickChartView]];
+            
+            [_stickChartView.delegate chartValueSelected:_stickChartView entry:entry dataSetIndex:0 highlight:[[ChartHighlight alloc] initWithXIndex:entry.xIndex dataSetIndex:0]];
+            
+            
+        } else {
+            entry = [_barChartView getEntryByTouchPoint:[gesture locationInView:_barChartView]];
+            [_barChartView.delegate chartValueSelected:_barChartView entry:entry dataSetIndex:0 highlight:[[ChartHighlight alloc] initWithXIndex:entry.xIndex dataSetIndex:0]];
+        }
+        [_stickChartView highlightValue:[[ChartHighlight alloc]initWithXIndex:entry.xIndex dataSetIndex:0]];
+        [_barChartView highlightValue:[[ChartHighlight alloc]initWithXIndex:entry.xIndex dataSetIndex:0]];
+    }
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"longPress==%@",@"end");
+        [_stickChartView.delegate chartValueNothingSelected:_stickChartView];
+        [_barChartView.delegate chartValueNothingSelected:_barChartView];
+        if ([dataArray.lastObject isKindOfClass:[NSDictionary class]]) {
+            if (_kChartViewDelegate && [_kChartViewDelegate respondsToSelector:@selector(didSelectChart:)]) {
+                [_kChartViewDelegate didSelectChart:dataArray.lastObject];
+                
+            }
+        }
+        _stickChartView.dragEnabled = YES;
+        _barChartView.dragEnabled = YES;
+    }
+
     
-    _stickChartView.dragEnabled = NO;
-    _barChartView.dragEnabled = NO;
-}
+   }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    
+    return;
     double diff = [touches anyObject].timestamp - clickTime;
     //当时间间隔<=1时，判断为短按。另外还要取消 performSelector...指定的延迟消息。 不然longPress总会调用
     if (diff <= 1) {
@@ -473,11 +504,12 @@
         }
 
     }
-    _stickChartView.dragEnabled = YES;
-    _barChartView.dragEnabled = YES;
+    
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    return;
     UITouch *touch = [touches anyObject];
     UIView *view = [touch view];
     ChartDataEntry *entry;
