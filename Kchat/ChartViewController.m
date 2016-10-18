@@ -46,8 +46,6 @@
     [self getData];
 }
 
-
-
 - (void)viewWillAppear:(BOOL)animated{
 }
 
@@ -60,7 +58,6 @@
     afmanager = [AFHTTPSessionManager manager];
     afmanager.responseSerializer = [AFHTTPResponseSerializer serializer];
 
-//    afmanager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/csv", nil];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [afmanager GET:_req_url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
 
@@ -88,8 +85,8 @@
        
         dataArray = [NSArray arrayWithArray:dict[@"resultEntity"][@"kChartResource"]];
         if (dataArray.count > 0) {
+            
             [self setData];
-
             
             if ([dataArray.lastObject isKindOfClass:[NSDictionary class]]) {
                 if (_kChartViewDelegate && [_kChartViewDelegate respondsToSelector:@selector(didSelectChart:)]) {
@@ -209,19 +206,15 @@
     leftAxis.drawLabelsEnabled = YES;
     [leftAxis setGridLineDashLengths:@[@(3), @(2), @(0)]];
     leftAxis.labelCount = 2;
-//    leftAxis.axisMinValue = 0;
     leftAxis.showOnlyMinMaxEnabled = NO;
     leftAxis.valueFormatter = leftAxisFormatter;
     leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
-//    leftAxis.spaceTop = 5;
     
-    //    _barChartView.rightAxis.enabled = NO;
     _barChartView.rightAxis.drawAxisLineEnabled = NO;
     _barChartView.rightAxis.drawLabelsEnabled = NO;
     _barChartView.rightAxis.drawGridLinesEnabled = NO;
     
     _barChartView.dragDecelerationEnabled = YES;
-//    _barChartView.dragDecelerationFrictionCoef = 0.2f;
 }
 
 - (void)setStickDataCount {
@@ -240,8 +233,6 @@
         NSString *dateString = dataDic[@"date"];
         [xVals1 addObject:dateString];
     }
-    
-//    months = [NSArray arrayWithArray:xVals1];
     
     CandleChartDataSet *set1 = [[CandleChartDataSet alloc] initWithYVals:yVals1 label:@"kchart"];
     set1.barSpace = 0.1;
@@ -263,7 +254,6 @@
     set1.shadowColorSameAsCandle = YES;
     CandleChartData *data = [[CandleChartData alloc] initWithXVals:xVals1 dataSet:set1];
     _stickChartView.data = data;
-    
 
     ChartViewPortHandler *viewPortHandlerBar = _stickChartView.viewPortHandler;
     [viewPortHandlerBar setMaximumScaleX:6];
@@ -309,18 +299,14 @@
     [viewPortHandlerBar setMaximumScaleX:6];
     [_barChartView setVisibleXRangeMaximum:180];
     [viewPortHandlerBar refreshWithNewMatrix:[viewPortHandlerBar setZoomWithScaleX:3 scaleY:1] chart:_barChartView invalidate:YES];
-
     
     [_barChartView moveViewToX:dataArray.count - 1];
     [_barChartView invalidateIntrinsicContentSize];
     [_barChartView setNeedsDisplay];
-
 }
 
 #pragma mark - ChartViewDelegate
-
 //选中
-
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight {
 
     if (chartView == _stickChartView) {
@@ -355,7 +341,6 @@
 - (void)chartScaled:(ChartViewBase *)chartView scaleX:(CGFloat)scaleX scaleY:(CGFloat)scaleY{
     
     if (chartView == _stickChartView) {
-        
         srcChart = _stickChartView;
         dstChart = _barChartView;
     }else{
@@ -363,18 +348,14 @@
         dstChart = _stickChartView;
     }
     [self syncCharts];
-
 }
 
 //拖动回调
 - (void)chartTranslated:(ChartViewBase *)chartView dX:(CGFloat)dX dY:(CGFloat)dY{
     
-    
     if (chartView == _stickChartView) {
-        
         srcChart = _stickChartView;
         dstChart = _barChartView;
-        
     }else{
         srcChart = _barChartView;
         dstChart = _stickChartView;
@@ -396,7 +377,6 @@
     
     [srcChart setNeedsLayout];
     [dstChart setNeedsLayout];
-  
 }
 //x轴标签
 //- (NSString *)stringForValue:(double)value
@@ -406,8 +386,6 @@
 
 /*设置量表对齐*/
 - (void) setOffSet{
-    
-    
     float lineLeft = _stickChartView.viewPortHandler.offsetLeft;
     float barLeft = _barChartView.viewPortHandler.offsetLeft;
     float lineRight = _stickChartView.viewPortHandler.offsetRight;
@@ -436,14 +414,6 @@
     [_barChartView notifyDataSetChanged];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-//    UITouch *touch = [touches anyObject];
-//
-//    clickTime = touch.timestamp;
-    
-}
-
 - (void)longPress:(UIGestureRecognizer*)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
         NSLog(@"longPress==%@",@"begin");
@@ -459,7 +429,6 @@
             entry = [_stickChartView getEntryByTouchPoint:[gesture locationInView:_stickChartView]];
             
             [_stickChartView.delegate chartValueSelected:_stickChartView entry:entry dataSetIndex:0 highlight:[[ChartHighlight alloc] initWithXIndex:entry.xIndex dataSetIndex:0]];
-            
             
         } else {
             entry = [_barChartView getEntryByTouchPoint:[gesture locationInView:_barChartView]];
@@ -481,52 +450,6 @@
         _stickChartView.dragEnabled = YES;
         _barChartView.dragEnabled = YES;
     }
-
-    
-   }
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-    return;
-    double diff = [touches anyObject].timestamp - clickTime;
-    //当时间间隔<=1时，判断为短按。另外还要取消 performSelector...指定的延迟消息。 不然longPress总会调用
-    if (diff <= 1) {
-        NSLog(@"short%@",@"");
-        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(longPress) object:nil];
-    }else{
-        [_stickChartView.delegate chartValueNothingSelected:_stickChartView];
-        [_barChartView.delegate chartValueNothingSelected:_barChartView];
-        if ([dataArray.lastObject isKindOfClass:[NSDictionary class]]) {
-            if (_kChartViewDelegate && [_kChartViewDelegate respondsToSelector:@selector(didSelectChart:)]) {
-                [_kChartViewDelegate didSelectChart:dataArray.lastObject];
-                
-            }
-        }
-
-    }
-    
-}
-
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-    return;
-    UITouch *touch = [touches anyObject];
-    UIView *view = [touch view];
-    ChartDataEntry *entry;
-    if (view == _stickChartView) {
-        entry = [_stickChartView getEntryByTouchPoint:[touch locationInView:_stickChartView]];
-        
-        [_stickChartView.delegate chartValueSelected:_stickChartView entry:entry dataSetIndex:0 highlight:[[ChartHighlight alloc] initWithXIndex:entry.xIndex dataSetIndex:0]];
-        
-       
-    } else {
-        entry = [_barChartView getEntryByTouchPoint:[touch locationInView:_barChartView]];
-        [_barChartView.delegate chartValueSelected:_barChartView entry:entry dataSetIndex:0 highlight:[[ChartHighlight alloc] initWithXIndex:entry.xIndex dataSetIndex:0]];
-    }
-    [_stickChartView highlightValue:[[ChartHighlight alloc]initWithXIndex:entry.xIndex dataSetIndex:0]];
-    [_barChartView highlightValue:[[ChartHighlight alloc]initWithXIndex:entry.xIndex dataSetIndex:0]];
-
-//    [self syncCharts];
 }
 
 - (BOOL)shouldAutorotate{
