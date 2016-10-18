@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DemoBaseViewController.h"
+#import <Charts/Charts-swift.h>
+
 //主线程调用
 #define dispatch_main_sync_safe(block)\
 if ([NSThread isMainThread]) {\

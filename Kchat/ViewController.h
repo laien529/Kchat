@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Charts/Charts-swift.h>
+
+#define formatString(obj1,obj2) [NSString stringWithFormat:@"%@%@",obj1,obj2]
 
 @interface ViewController : UIViewController
 

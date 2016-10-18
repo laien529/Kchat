@@ -10,6 +10,7 @@
 		48943BDE1DAA4CE200C895A5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 48943BDD1DAA4CE200C895A5 /* MBProgressHUD.m */; };
 		48943BE51DAD104800C895A5 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48943BE31DAD104800C895A5 /* TestViewController.m */; };
 		48943BE61DAD104800C895A5 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48943BE41DAD104800C895A5 /* TestViewController.xib */; };
+		48CB0CFB1DB5B616004F7AAB /* DemoBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 48CB0CFA1DB5B616004F7AAB /* DemoBaseViewController.m */; };
 		48DA33A51DA55CDD0022C19E /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48DA33A41DA55CDD0022C19E /* Charts.framework */; };
 		48DA33A61DA55CDD0022C19E /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 48DA33A41DA55CDD0022C19E /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		48DA33D21DA62CBA0022C19E /* Kchat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA33D11DA62CBA0022C19E /* Kchat.swift */; };
@@ -37,7 +38,6 @@
 		48F636151D94158200721C36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48F636141D94158200721C36 /* Assets.xcassets */; };
 		48F636181D94158200721C36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48F636161D94158200721C36 /* LaunchScreen.storyboard */; };
 		48F636201D941BF700721C36 /* KchatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48F6361F1D941BF700721C36 /* KchatViewController.xib */; };
-		8783B83B1DB47DF600141C07 /* DemoBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8783B83A1DB47DF600141C07 /* DemoBaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +91,8 @@
 		48943BE21DAD104800C895A5 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		48943BE31DAD104800C895A5 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		48943BE41DAD104800C895A5 /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
+		48CB0CF91DB5B616004F7AAB /* DemoBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoBaseViewController.h; sourceTree = "<group>"; };
+		48CB0CFA1DB5B616004F7AAB /* DemoBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoBaseViewController.m; sourceTree = "<group>"; };
 		48DA33A41DA55CDD0022C19E /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
 		48DA33D11DA62CBA0022C19E /* Kchat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kchat.swift; sourceTree = "<group>"; };
 		48DA33D31DA62CE80022C19E /* Kchat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kchat-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -131,8 +133,6 @@
 		48F636171D94158200721C36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48F636191D94158200721C36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48F6361F1D941BF700721C36 /* KchatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KchatViewController.xib; sourceTree = "<group>"; };
-		8783B8391DB47DF600141C07 /* DemoBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoBaseViewController.h; sourceTree = "<group>"; };
-		8783B83A1DB47DF600141C07 /* DemoBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoBaseViewController.m; sourceTree = "<group>"; };
 		8783B83E1DB49BF000141C07 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = ../../../Charts/Charts.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,8 +227,8 @@
 		48F636071D94158200721C36 /* Kchat */ = {
 			isa = PBXGroup;
 			children = (
-				8783B8391DB47DF600141C07 /* DemoBaseViewController.h */,
-				8783B83A1DB47DF600141C07 /* DemoBaseViewController.m */,
+				48CB0CF91DB5B616004F7AAB /* DemoBaseViewController.h */,
+				48CB0CFA1DB5B616004F7AAB /* DemoBaseViewController.m */,
 				48F6360B1D94158200721C36 /* AppDelegate.h */,
 				48F6360C1D94158200721C36 /* AppDelegate.m */,
 				48F636141D94158200721C36 /* Assets.xcassets */,
@@ -386,7 +386,7 @@
 				48DA33D21DA62CBA0022C19E /* Kchat.swift in Sources */,
 				48F636101D94158200721C36 /* ViewController.m in Sources */,
 				48E0A6861D99723000B1CC94 /* AFURLSessionManager.m in Sources */,
-				8783B83B1DB47DF600141C07 /* DemoBaseViewController.m in Sources */,
+				48CB0CFB1DB5B616004F7AAB /* DemoBaseViewController.m in Sources */,
 				48E0A60D1D97D40D00B1CC94 /* ChartViewController.m in Sources */,
 				48E0A6821D99723000B1CC94 /* AFNetworkReachabilityManager.m in Sources */,
 				48E0A6851D99723000B1CC94 /* AFURLResponseSerialization.m in Sources */,
