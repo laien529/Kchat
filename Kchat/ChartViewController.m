@@ -20,7 +20,7 @@
     NSString *_pageNo;
     ChartViewBase *srcChart;
     ChartViewBase *dstChart;
-
+    double clickTime;
 }
 @property (nonatomic, weak) IBOutlet BarChartView *barChartView;
 @property (nonatomic, weak) IBOutlet CandleStickChartView *stickChartView;
@@ -128,9 +128,10 @@
     _stickChartView.scaleXEnabled = YES;
     _stickChartView.dragEnabled = YES;
     _stickChartView.doubleTapToZoomEnabled = NO;
-    _stickChartView.highlightPerTapEnabled = YES;
-    _stickChartView.highlightFullBarEnabled = YES;
-    _stickChartView.highlightPerDragEnabled = NO;
+    _stickChartView.highlightPerTapEnabled = NO;
+//    _stickChartView.highlightFullBarEnabled = YES;
+//    _stickChartView.highlightPerDragEnabled = NO;
+
     //x轴
     ChartXAxis *xAxis = _stickChartView.xAxis;
     xAxis.drawLabelsEnabled = YES;
@@ -321,16 +322,17 @@
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight {
 
-    _stickChartView.dragEnabled = NO;
-    _barChartView.dragEnabled = NO;
+
 
     if (chartView == _stickChartView) {
         [_barChartView highlightValueWithXIndex:entry.xIndex dataSetIndex:dataSetIndex callDelegate:NO];
 
     } else {
         [_stickChartView highlightValueWithXIndex:entry.xIndex dataSetIndex:dataSetIndex callDelegate:NO];
-//        [_stickChartView setNeedsDisplay];
     }
+    [_stickChartView setNeedsDisplay];
+    [_barChartView setNeedsDisplay];
+
     NSInteger clickIndex = entry.xIndex;
 
     dispatch_main_sync_safe(^(){
@@ -345,8 +347,7 @@
 
 //取消选中
 - (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView {
-    _stickChartView.dragEnabled = YES;
-    _barChartView.dragEnabled = YES;
+
     [_stickChartView highlightValues:nil];
     [_barChartView highlightValues:nil];
 }
@@ -394,6 +395,8 @@
 
     dstMatrix = [dstChart.viewPortHandler refreshWithNewMatrix:srcMatrix chart:dstChart invalidate:YES];
     
+    [srcChart setNeedsLayout];
+    [dstChart setNeedsLayout];
   
 }
 //x轴标签
@@ -432,6 +435,66 @@
     }
     [_barChartView setViewPortOffsetsWithLeft:transLeft top:15 right:transRight bottom:barBottom];
     [_barChartView notifyDataSetChanged];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [touches anyObject];
+
+    clickTime = touch.timestamp;
+    
+    [self performSelector:@selector(longPress) withObject:nil afterDelay:1];
+
+}
+
+- (void)longPress {
+    NSLog(@"longPress%@",@"");
+    
+    _stickChartView.dragEnabled = NO;
+    _barChartView.dragEnabled = NO;
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    
+    double diff = [touches anyObject].timestamp - clickTime;
+    //当时间间隔<=1时，判断为短按。另外还要取消 performSelector...指定的延迟消息。 不然longPress总会调用
+    if (diff <= 1) {
+        NSLog(@"short%@",@"");
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(longPress) object:nil];
+    }else{
+        [_stickChartView.delegate chartValueNothingSelected:_stickChartView];
+        [_barChartView.delegate chartValueNothingSelected:_barChartView];
+        if ([dataArray.lastObject isKindOfClass:[NSDictionary class]]) {
+            if (_kChartViewDelegate && [_kChartViewDelegate respondsToSelector:@selector(didSelectChart:)]) {
+                [_kChartViewDelegate didSelectChart:dataArray.lastObject];
+                
+            }
+        }
+
+    }
+    _stickChartView.dragEnabled = YES;
+    _barChartView.dragEnabled = YES;
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    UIView *view = [touch view];
+    ChartDataEntry *entry;
+    if (view == _stickChartView) {
+        entry = [_stickChartView getEntryByTouchPoint:[touch locationInView:_stickChartView]];
+        
+        [_stickChartView.delegate chartValueSelected:_stickChartView entry:entry dataSetIndex:0 highlight:[[ChartHighlight alloc] initWithXIndex:entry.xIndex dataSetIndex:0]];
+        
+       
+    } else {
+        entry = [_barChartView getEntryByTouchPoint:[touch locationInView:_barChartView]];
+        [_barChartView.delegate chartValueSelected:_barChartView entry:entry dataSetIndex:0 highlight:[[ChartHighlight alloc] initWithXIndex:entry.xIndex dataSetIndex:0]];
+    }
+    [_stickChartView highlightValue:[[ChartHighlight alloc]initWithXIndex:entry.xIndex dataSetIndex:0]];
+    [_barChartView highlightValue:[[ChartHighlight alloc]initWithXIndex:entry.xIndex dataSetIndex:0]];
+
+//    [self syncCharts];
 }
 
 - (BOOL)shouldAutorotate{
