@@ -128,7 +128,9 @@
     _stickChartView.scaleXEnabled = YES;
     _stickChartView.dragEnabled = YES;
     _stickChartView.doubleTapToZoomEnabled = NO;
-
+    _stickChartView.highlightPerTapEnabled = YES;
+    _stickChartView.highlightFullBarEnabled = YES;
+    _stickChartView.highlightPerDragEnabled = NO;
     //x轴
     ChartXAxis *xAxis = _stickChartView.xAxis;
     xAxis.drawLabelsEnabled = YES;
@@ -247,16 +249,16 @@
     set1.highlightColor = [UIColor darkGrayColor];
     set1.valueFont = [UIFont systemFontOfSize:10.0f];
     set1.drawValuesEnabled = NO;
-    set1.decreasingColor = [UIColor colorWithRed:211/255.f green:61/255.f blue:50/255.f alpha:1.f];
+    set1.decreasingColor = [UIColor colorWithRed:44/255.f green:185/255.f blue:80/255.f alpha:1.f];
     set1.decreasingFilled = YES;
-    set1.increasingColor = [UIColor colorWithRed:44/255.f green:185/255.f blue:80/255.f alpha:1.f];
+    set1.increasingColor = [UIColor colorWithRed:211/255.f green:61/255.f blue:50/255.f alpha:1.f];
     set1.increasingFilled = YES;
     [set1 setDrawHighlightIndicators:YES];
     set1.highlightLineWidth = 0.5;
     set1.neutralColor = [UIColor colorWithRed:44/255. green:185/255 blue:80/255. alpha:1];
     set1.axisDependency = AxisDependencyLeft;
     set1.shadowWidth = 0.2;
-    
+    set1.shadowColorSameAsCandle = YES;
     CandleChartData *data = [[CandleChartData alloc] initWithXVals:xVals1 dataSet:set1];
     _stickChartView.data = data;
     
@@ -318,17 +320,16 @@
 //选中
 
 - (void)chartValueSelected:(ChartViewBase * __nonnull)chartView entry:(ChartDataEntry * __nonnull)entry dataSetIndex:(NSInteger)dataSetIndex highlight:(ChartHighlight * __nonnull)highlight {
-    NSLog(@"chartValueSelected");
+
+    _stickChartView.dragEnabled = NO;
+    _barChartView.dragEnabled = NO;
+
     if (chartView == _stickChartView) {
         [_barChartView highlightValueWithXIndex:entry.xIndex dataSetIndex:dataSetIndex callDelegate:NO];
-//        [_barChartView setNeedsDisplay];
-
 
     } else {
         [_stickChartView highlightValueWithXIndex:entry.xIndex dataSetIndex:dataSetIndex callDelegate:NO];
 //        [_stickChartView setNeedsDisplay];
-
-
     }
     NSInteger clickIndex = entry.xIndex;
 
@@ -344,8 +345,10 @@
 
 //取消选中
 - (void)chartValueNothingSelected:(ChartViewBase * __nonnull)chartView {
-//    _stickChartView.dragEnabled = YES;
-
+    _stickChartView.dragEnabled = YES;
+    _barChartView.dragEnabled = YES;
+    [_stickChartView highlightValues:nil];
+    [_barChartView highlightValues:nil];
 }
 
 //缩放回调
